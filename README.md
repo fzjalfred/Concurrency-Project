@@ -3,3 +3,4 @@
 CS343 assignment 6 - group project
 
 This is a test
+This is a test2
