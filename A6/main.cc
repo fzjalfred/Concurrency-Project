@@ -67,12 +67,13 @@ int main(int argc, char const *argv[])
         }
 
         /* wait all tasks to finish */
-        for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){
-            delete machines[i];
-        }
-        /* wait all tasks to finish */
         for (unsigned int i = 0; i < cparms.numStudents; ++i){
             delete students[i];
+        }
+
+        /* wait all tasks to finish */
+        for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){
+            delete machines[i];
         }
     }
     

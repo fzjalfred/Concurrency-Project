@@ -1,18 +1,22 @@
 #pragma once
 #include "MPRNG.h"
+#include "WATCard.h"
+#include <queue>
 
 extern MPRNG rng;
 _Monitor Printer;
 
 _Task WATCardOffice {
-    /* TODO
-	struct Job {							// marshalled arguments and return future
-		Args args;							// call arguments (YOU DEFINE "Args")
+
+	struct Job {							// marshalled arguments and return future TODO
+		unsigned int sid;					// call arguments (YOU DEFINE "Args")
 		WATCard::FWATCard result;			// return future
-		Job( Args args ) : args( args ) {}
+		Job( unsigned int sid ) : sid( sid ) {}
 	};
-	_Task Courier { ... };					// communicates with bank
-    */ 
+	//_Task Courier { ... };					// communicates with bank TODO
+
+    //WATCard::FWATCard card;
+    std::queue<Job> requests;
     Printer& prt;
     unsigned int numCouriers;
     unsigned int curAmount;
@@ -20,8 +24,9 @@ _Task WATCardOffice {
 	void main();
   public:
 	_Event Lost {};							// lost WATCard
+    ~WATCardOffice();
 	WATCardOffice( Printer & prt, /*Bank & bank, TODO*/ unsigned int numCouriers );
-	//WATCard::FWATCard create( unsigned int sid, unsigned int amount );
-	//WATCard::FWATCard transfer( unsigned int sid, unsigned int amount, WATCard * card );
+	WATCard::FWATCard create( unsigned int sid, unsigned int amount );
+	// WATCard::FWATCard transfer( unsigned int sid, unsigned int amount, WATCard * card );
 	// Job * requestWork(); TODO
 };

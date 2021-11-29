@@ -6,8 +6,7 @@ extern MPRNG rng;
 _Monitor Printer;
 
 _Task Groupoff {
-    WATCard::FWATCard **cards;
-    WATCard ** realCards;
+    WATCard::FWATCard *cards;
     Printer & prt;
     unsigned int numStudents;
     unsigned int sodaCost; 

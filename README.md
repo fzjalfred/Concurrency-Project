@@ -15,10 +15,10 @@ Usage:	make soda
     - Main, Printer         (Done 25/11/2021)
     - NameServer            (Done 27/11/2021)
     - Groupoff              (Done 27/11/2021)
-    - Student (TODO)        (Estimated done 28/11/2021)
-    - VendingMachine (TODO) (Estimated done 28/11/2021)
-    - WatCard (TODO)        (Estimated done 02/12/2021)
-    - WATCardOffice (TODO)  (Estimated done 02/12/2021)
+    - Student               (Doing 28/11/2021)
+    - VendingMachine        (Doing 28/11/2021)
+    - WatCard               (Done 02/12/2021)
+    - WATCardOffice         (Doing 02/12/2021)
     - self test             (Estimated done 28/11/2021)
     - code review           (Estimated done 04/12/2021)
     - general test          (Estimated done 05/12/2021)
@@ -38,4 +38,5 @@ Usage:	make soda
 
 ### Project feature:
 - Done: NameServer and GroupOff work correctly: NameServer match each machine to each student, GroupOff gives students giftcard with money
-- TODO: buy soda main logic
+- Done: buy soda main logic (Done 28/11/2021)
+- TODO: restocking/ bank/ parent
