@@ -22,7 +22,7 @@ WATCard::FWATCard Groupoff::giftCard(){
 }
 
 void Groupoff::main(){
-    prt.print(Printer::Groupoff, 'S');
+    PRINT(Printer::Groupoff, 'S');
     for (;;){
         if (curCompletedStudents == numStudents) break;
         _Accept(~Groupoff){break;}
@@ -35,13 +35,13 @@ void Groupoff::main(){
                 realCard->deposit(sodaCost);    
                 yield(groupoffDelay);   // yield before delivery
                 cards[rdmID].delivery(realCard);   
-                prt.print(Printer::Groupoff, 'D', sodaCost);
+                PRINT(Printer::Groupoff, 'D', sodaCost);
                 std::swap(cards[rdmID], cards[curWaitingStudents-1]);   // remove delivered card to the last
                 curCompletedStudents++;
                 curWaitingStudents--;
             }
         }
     }
-    prt.print(Printer::Groupoff, 'F');
+    PRINT(Printer::Groupoff, 'F');
 }
 

@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef NOOUTPUT
+#define PRINT( stmt... )
+#else
+#define PRINT( stmt... ) prt.print(stmt)
+#endif // NOOUTPUT
+
 _Monitor Printer {
   public:
     enum Kind { Parent, Groupoff, WATCardOffice, NameServer, Truck, BottlingPlant, Student, Vending, Courier };

@@ -44,7 +44,7 @@ _Nomutex unsigned int VendingMachine::getId() const{
 }
 
 void VendingMachine::main(){
-    prt.print(Printer::Kind::Vending, id,'S');
+    PRINT(Printer::Kind::Vending, id,'S');
     nameServer.VMregister(this);
     for (;;){
         try{
@@ -52,16 +52,16 @@ void VendingMachine::main(){
             or _Accept(buy){ // normal buy
                 currCard->withdraw(sodaCost);
                 stock[currFlavour]--;
-                prt.print(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
+                PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 while (!waiting.empty()) waiting.signalBlock();
             }   // buy
         }   catch(uMutexFailure::RendezvousFailure &){  // exp buy TODO for restocking and funding
             switch (flag)
             {
             case VendingMachine::Status::free:
-                prt.print(Printer::Kind::Vending, id, 'A');
+                PRINT(Printer::Kind::Vending, id, 'A');
                 stock[currFlavour]--;
-                prt.print(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
+                PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 break;
             case VendingMachine::Status::funds:
                 //TODO
@@ -74,5 +74,5 @@ void VendingMachine::main(){
             }   // switch
         }   // try     
     }   // for  
-    prt.print(Printer::Kind::Vending, id, 'F');
+    PRINT(Printer::Kind::Vending, id, 'F');
 }

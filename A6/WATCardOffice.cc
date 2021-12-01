@@ -26,7 +26,7 @@ WATCardOffice::~WATCardOffice(){
 }
 
 void WATCardOffice::main(){
-    prt.print(Printer::Kind::WATCardOffice, 'S');
+    PRINT(Printer::Kind::WATCardOffice, 'S');
     // TODO
     
     for (;;){
@@ -37,9 +37,9 @@ void WATCardOffice::main(){
             WATCard *realCard = new WATCard();
             realCard->deposit(curAmount);
             requests.back().result.delivery(realCard);
-            prt.print(Printer::Kind::WATCardOffice, 'C', curSid, curAmount);
+            PRINT(Printer::Kind::WATCardOffice, 'C', curSid, curAmount);
         }
     }
-    prt.print(Printer::Kind::WATCardOffice, 'F');
+    PRINT(Printer::Kind::WATCardOffice, 'F');
 }
 
