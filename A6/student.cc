@@ -10,15 +10,18 @@
 Student::Student( Printer & prt, NameServer & nameServer, WATCardOffice & cardOffice, Groupoff & groupoff,unsigned int id, unsigned int maxPurchases )
 :prt{prt}, nameServer{nameServer}, cardOffice{cardOffice}, groupoff{groupoff}, id{id}, maxPurchases{maxPurchases}, numPurchased{0}{}
 
-void Student::main(){   //TODO Now watcard has infty amount
+void Student::main(){   
+    //TODO Now watcard has infty amount
     unsigned int sodaToBuy = rng(1, maxPurchases);  // number of soda to buy
-    VendingMachine::Flavours flavour = static_cast<VendingMachine::Flavours>(rng(2));   // flavour of soda to buy
+    VendingMachine::Flavours flavour = static_cast<VendingMachine::Flavours>(rng(3));   // flavour of soda to buy
     PRINT(Printer::Kind::Student,id,'S',flavour, sodaToBuy);
     WATCard::FWATCard giftCard = groupoff.giftCard();
-    WATCard::FWATCard watCard = cardOffice.create(id, 99);
+    WATCard::FWATCard watCard = cardOffice.create(id, 5);
     WATCard* card = nullptr;                            // which card to use
+    // obtain the location of vending machine
     VendingMachine* machine = nameServer.getMachine(id);
     PRINT(Printer::Kind::Student,id,'V', machine->getId());
+
     for (;;){
         if (numPurchased == sodaToBuy) break;
         yield(rng(1,10)); // yield 1-10 times
@@ -38,10 +41,9 @@ void Student::main(){   //TODO Now watcard has infty amount
                 numPurchased++;
             }   catch(VendingMachine::Stock&){
                 //TODO
-            }   catch(VendingMachine::Funds&){
-                //TODO
             }
         }   else{   // watcard is aviliable
+            REBUY:
             try{
                 card = watCard();
                 machine->buy(flavour, *card);
@@ -51,7 +53,13 @@ void Student::main(){   //TODO Now watcard has infty amount
                 yield(4);   // watch adv
                 PRINT(Printer::Kind::Student,id,'A', flavour, card->getBalance());
                 numPurchased++;
-            }   // try
+            }   catch(WATCardOffice::Lost &e){
+                watCard = cardOffice.create(id, 5);
+                goto REBUY;
+            }   catch(VendingMachine::Funds&){
+                watCard = cardOffice.transfer(id, machine->cost() + 5, card);
+                goto REBUY;
+            }// try
         }   // if
     } // for
 

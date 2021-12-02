@@ -13,12 +13,12 @@ _Task VendingMachine {
 	NameServer& nameServer;
     unsigned int id;
     unsigned int sodaCost;
-	unsigned int stock[3] = {0, 0, 0};	// stock for each flavor
+	unsigned int stock[4] = {0, 0, 0, 0};	// stock for each flavor
 	WATCard* currCard;
 	uCondition waiting;
 
   public:
-	enum Flavours { Orange, Cherry, LaoGanMa }; 				// flavours of soda (YOU DEFINE)
+	enum Flavours { Orange, Cherry, LaoGanMa, Lemon }; 				// flavours of soda (YOU DEFINE)
 	_Event Free {};						// free, advertisement
 	_Event Funds {};					// insufficient funds
 	_Event Stock {};					// flavour out of stock

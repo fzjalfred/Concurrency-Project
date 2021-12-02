@@ -6,7 +6,7 @@
 
 VendingMachine::VendingMachine( Printer & prt, NameServer & nameServer, unsigned int id, unsigned int sodaCost ):
 prt{prt}, nameServer{nameServer}, id{id}, sodaCost{sodaCost}{
-    for (unsigned int i = 0; i < 3; ++i) stock[i] = 999;    //Remove it when done truck/plant
+    for (unsigned int i = 0; i < 4; ++i) stock[i] = 999;    //Remove it when done truck/plant
 }
 
 void VendingMachine::buy( VendingMachine::Flavours flavour, WATCard & card ){

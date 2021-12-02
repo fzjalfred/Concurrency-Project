@@ -9,6 +9,7 @@
 #include "student.h"
 #include "groupOff.h"
 #include "WATCardOffice.h"
+#include "bank.h"
 using namespace std;
 
 MPRNG rng;
@@ -50,9 +51,10 @@ int main(int argc, char const *argv[])
     /* initialize all tasks */
     {
         Printer prt(cparms.numStudents, cparms.numVendingMachines, cparms.numCouriers);
+        Bank bank(cparms.numStudents);
         NameServer nameServer(prt,cparms.numVendingMachines, cparms.numStudents);
         Groupoff groupOff(prt, cparms.numStudents, cparms.sodaCost, cparms.groupoffDelay);
-        WATCardOffice office(prt, cparms.numCouriers);
+        WATCardOffice office(prt, bank, cparms.numCouriers);
         VendingMachine * machines[cparms.numVendingMachines];
         Student * students[cparms.numStudents];
         
