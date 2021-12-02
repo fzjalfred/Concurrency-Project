@@ -2,6 +2,9 @@
 
 Bank::Bank( unsigned int numStudents ) {
     accounts = new uint [numStudents] {0};
+    for (uint i = 0; i<numStudents; i++) {
+        accounts[i] = 999;
+    }
 }
 Bank::~Bank(){
     delete [] accounts;

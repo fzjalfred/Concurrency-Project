@@ -9,18 +9,20 @@ _Monitor Printer;
 
 struct Job {							// marshalled arguments and return future TODO
 		unsigned int sid;					// call arguments (YOU DEFINE "Args")
-		uint amount;
+		uint amount;                     // amount to be transfered.
+		WATCard* card;                  // student's watcard
 		WATCard::FWATCard result;			// return future
-		Job( unsigned int sid, uint amount ) : sid( sid ), amount(amount) {}
+		Job( unsigned int sid, uint amount, WATCard* card = nullptr ) : sid( sid ), amount(amount), card(card) {}
 };
 
 _Task WATCardOffice {
 
 	
 	_Task Courier;					// communicates with bank TODO
-
+	Courier** couriersPool;             // courier pool
+	uCondition waiting;
     //WATCard::FWATCard card;
-    std::queue<Job> requests;
+    std::queue<Job*> requests;
     Printer& prt;
     unsigned int numCouriers;
     unsigned int curAmount;
