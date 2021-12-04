@@ -10,6 +10,7 @@
 #include "groupOff.h"
 #include "WATCardOffice.h"
 #include "bank.h"
+#include "parent.h"
 using namespace std;
 
 MPRNG rng;
@@ -57,6 +58,7 @@ int main(int argc, char const *argv[])
         WATCardOffice office(prt, bank, cparms.numCouriers);
         VendingMachine * machines[cparms.numVendingMachines];
         Student * students[cparms.numStudents];
+        Parent parent(prt, bank, cparms.numStudents, cparms.parentalDelay);
         
         /* initialize all vending machines */
         for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){
