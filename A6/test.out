@@ -1,0 +1,150 @@
+Parent	Gropoff	WATOff	Names	Truck	Plant	Stud0	Stud1	Stud2	Stud3	Mach0	Mach1	Mach2	Cour0	
+*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	
+S	S	S	S	S		S3,5	S3,2	S3,7	S0,8	S	S	S	S	
+			R0											
+D3,1		W	R1										t0,5	
+			R2			V0								
+			N0,0				V1							
+D3,3			N1,1					V2						
+			N2,2						V0					
+D1,2			N3,0	P4										
+				d0,396										
+				U0,0										
+inventory call caught: 
+truck machine .. 0
+				D0,380										
+				d1,396										
+				U1,0										
+inventory call caught: 
+truck machine .. 1
+D3,3	D2			D1,756										
+				d2,396										
+				U2,0										
+inventory call caught: 
+truck machine .. 2
+D3,3				D2,1132										
+				P4										
+				d0,20										
+				U0,0										
+truck machine .. 0
+				D0,4										
+				d1,20										
+				U1,0										
+truck machine .. 1
+				D1,4										
+				d2,20										
+				U2,0										
+truck machine .. 2
+D1,1	D2			D2,4										
+				P4										
+				d0,20										
+				U0,0										
+truck machine .. 0
+				D0,4										
+				d1,20										
+				U1,0										
+truck machine .. 1
+				D1,4										
+				d2,20										
+				U2,0										
+truck machine .. 2
+				D2,4										
+D1,3	D2			F										
+D0,3														
+D0,3		W											L0	
+													t1,5	
+	D2												T1,5	
+D3,1	F	W											t2,5	
+D2,1														
+D2,3														
+D0,1														
+D0,2														
+D3,3														
+D1,1														
+D3,2														
+D3,2														
+D3,3														
+D3,1														
+D0,2														
+D0,2														
+D1,1														
+D0,2														
+D2,1		W											T2,5	
+													t3,5	
+		W											T3,5	
+													t0,5	
+D1,1						A3,5							T0,5	
+D2,3														
+D3,2														
+D3,2														
+D3,2														
+D1,2														
+D3,3														
+D0,2														
+D0,3														
+D0,1														
+D1,1														
+D1,2														
+D2,2														
+D3,2														
+D0,1														
+D2,2														
+D1,2														
+D2,3														
+D0,2														
+D1,1														
+D0,3														
+D1,2														
+D3,3														
+D1,3														
+D2,3														
+D0,1														
+D2,3														
+D3,2														
+D1,3														
+D0,3														
+D3,1														
+D2,2														
+D3,1														
+D3,2														
+D2,3														
+D1,3														
+D0,2														
+D0,3														
+D1,2														
+D0,3														
+D1,2														
+D1,2														
+D3,1														
+D3,2														
+D0,1														
+D2,2														
+D0,2														
+D2,1														
+D2,3														
+D1,2														
+D3,2														
+D2,3														
+D3,1														
+D0,2														
+D2,3														
+D3,2														
+D2,3														
+D1,1														
+D2,2														
+D3,1														
+D3,3														
+D3,1														
+D1,3														
+D2,3														
+D3,3														
+D2,2														
+D2,2														
+D0,3														
+D3,3														
+D3,1														
+D1,1														
+D0,2														
+D1,1														
+D2,2														
+D0,1														

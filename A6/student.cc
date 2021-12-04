@@ -40,7 +40,7 @@ void Student::main(){
                 PRINT(Printer::Kind::Student,id,'a', flavour, card->getBalance());
                 numPurchased++;
             }   catch(VendingMachine::Stock&){
-                //TODO
+                
             }
         }   else{   // watcard is aviliable
             REBUY:
@@ -59,12 +59,18 @@ void Student::main(){
             }   catch(VendingMachine::Funds&){
                 watCard = cardOffice.transfer(id, machine->cost() + 5, card);
                 goto REBUY;
-            }// try
+            }   catch(VendingMachine::Stock&){
+                goto REBUY;
+            }
         }   // if
     } // for
+    try {
+        card = watCard();   // delete watcard
+        delete card;
+    } catch (WATCardOffice::Lost &) {
 
-    card = watCard();   // delete watcard
-    delete card;
+    }
+    
 
     PRINT(Printer::Kind::Student,id,'F');
 }

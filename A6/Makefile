@@ -3,7 +3,7 @@ CXX = u++					# compiler
 CXXFLAGS = -g -multi -O2 -Wall -Wextra -MMD 
 MAKEFILE_NAME = ${firstword ${MAKEFILE_LIST}}	# makefile name
 
-OBJECTS = parent.o bank.o config.o printer.o nameServer.o vendingMachine.o student.o groupOff.o WATCard.o WATCardOffice.o main.o
+OBJECTS = bottlingPlant.o truck.o parent.o bank.o config.o printer.o nameServer.o vendingMachine.o student.o groupOff.o WATCard.o WATCardOffice.o main.o
 EXEC = soda
 
 DEPENDS = ${OBJECTS:.o=.d}			# substitute ".o" with ".d"

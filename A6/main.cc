@@ -11,6 +11,8 @@
 #include "WATCardOffice.h"
 #include "bank.h"
 #include "parent.h"
+#include "truck.h"
+#include "bottlingPlant.h"
 using namespace std;
 
 MPRNG rng;
@@ -59,6 +61,10 @@ int main(int argc, char const *argv[])
         VendingMachine * machines[cparms.numVendingMachines];
         Student * students[cparms.numStudents];
         Parent parent(prt, bank, cparms.numStudents, cparms.parentalDelay);
+        BottlingPlant plant(prt, nameServer, 
+            cparms.numVendingMachines, cparms.maxShippedPerFlavour, 
+            cparms.maxStockPerFlavour, cparms.timeBetweenShipments);
+        Truck truck(prt, nameServer, plant, cparms.numVendingMachines, cparms.maxStockPerFlavour);
         
         /* initialize all vending machines */
         for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){

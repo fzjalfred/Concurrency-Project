@@ -2,11 +2,11 @@
 #include "vendingMachine.h"
 #include "printer.h"
 #include "nameServer.h"
-
+#include <iostream>
 
 VendingMachine::VendingMachine( Printer & prt, NameServer & nameServer, unsigned int id, unsigned int sodaCost ):
 prt{prt}, nameServer{nameServer}, id{id}, sodaCost{sodaCost}{
-    for (unsigned int i = 0; i < 4; ++i) stock[i] = 999;    //Remove it when done truck/plant
+    for (unsigned int i = 0; i < 4; ++i) stock[i] = 99;    //Remove it when done truck/plant
 }
 
 void VendingMachine::buy( VendingMachine::Flavours flavour, WATCard & card ){
@@ -33,7 +33,8 @@ unsigned int * VendingMachine::inventory(){
 }
 
 void VendingMachine::restocked(){
-    //TODO
+    // indicates that restock is complete.
+    // Nothing to do.
 }
 
 _Nomutex unsigned int VendingMachine::cost() const{
@@ -55,6 +56,12 @@ void VendingMachine::main(){
                 PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 while (!waiting.empty()) waiting.signalBlock();
             }   // buy
+            or  _Accept(inventory) {
+                PRINT(Printer::Kind::Vending, id, 'r');
+                    _Accept(restocked) {
+                        PRINT(Printer::Kind::Vending, id, 'R');
+                }
+            }
         }   catch(uMutexFailure::RendezvousFailure &){  // exp buy TODO for restocking and funding
             switch (flag)
             {
@@ -64,15 +71,29 @@ void VendingMachine::main(){
                 PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 break;
             case VendingMachine::Status::funds:
-                //TODO
                 break;
             case VendingMachine::Status::stocks:
-                //TODO
+                _Accept(inventory) {
+                    PRINT(Printer::Kind::Vending, id, 'r');
+                    _Accept(restocked) {
+                        PRINT(Printer::Kind::Vending, id, 'R');
+                    }
+                }
                 break;
             default:
                 break;
             }   // switch
+        } _Finally {
         }   // try     
     }   // for  
+
+    //final release
+    _Accept(inventory) {
+        PRINT(Printer::Kind::Vending, id, 'r');
+            _Accept(restocked) {
+                PRINT(Printer::Kind::Vending, id, 'R');
+        }
+    }_Else;
+
     PRINT(Printer::Kind::Vending, id, 'F');
 }
