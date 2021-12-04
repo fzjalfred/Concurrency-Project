@@ -5,8 +5,7 @@
 
 Job * WATCardOffice::requestWork() {
     if (requests.empty()) {
-        std::cout<<"-1"<<std::endl;
-        waiting.wait();
+        return nullptr;
     }
     auto job = requests.front();
     requests.pop(); // the job is to be finished in the future.
@@ -27,7 +26,8 @@ _Task WATCardOffice::Courier {
         
         PRINT(Printer::Kind::Courier, id, 'S');
         for (;;) {
-            auto job = cardOffice->requestWork(); 
+            auto job = cardOffice->requestWork();
+            if ( job == nullptr ) break;
             PRINT(Printer::Kind::Courier, id, 't', job->sid, job->amount);
             bank.withdraw(job->sid, job->amount);
             job->card->deposit(job->amount);
@@ -45,7 +45,7 @@ _Task WATCardOffice::Courier {
             delete job;
         }
 
-
+        PRINT(Printer::Kind::Courier, id, 'F');
         
     }
 };
@@ -98,6 +98,11 @@ void WATCardOffice::main(){
             
         } 
     } // for 
+    
+    // release the last call of requestWork
+    for (unsigned int i = 0; i < numCouriers; i++) {
+        _Accept ( requestWork );
+    }
     
     // for (;;){
     //     _Accept(~WATCardOffice){
