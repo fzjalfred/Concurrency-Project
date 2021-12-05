@@ -85,15 +85,7 @@ void VendingMachine::main(){
             }   // switch
         } _Finally {
         }   // try     
-    }   // for  
-
-    //final release
-    _Accept(inventory) {
-        PRINT(Printer::Kind::Vending, id, 'r');
-            _Accept(restocked) {
-                PRINT(Printer::Kind::Vending, id, 'R');
-        }
-    }_Else;
+    }   // for
 
     PRINT(Printer::Kind::Vending, id, 'F');
 }

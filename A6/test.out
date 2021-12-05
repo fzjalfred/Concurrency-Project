@@ -10,54 +10,39 @@ D3,3			N1,1					V2
 D1,2			N3,0	P4										
 				d0,396										
 				U0,0										
-inventory call caught: 
-truck machine .. 0
-				D0,380										
+				D0,416						r				
 				d1,396										
 				U1,0										
-inventory call caught: 
-truck machine .. 1
-D3,3	D2			D1,756										
+D3,3	D2			D1,792						R	r			
 				d2,396										
 				U2,0										
-inventory call caught: 
-truck machine .. 2
-D3,3				D2,1132										
-				P4										
-				d0,20										
+				D2,1168					G0,0	B0,4	R	r		
+				P4								R		
+				d0,19										
 				U0,0										
-truck machine .. 0
-				D0,4										
+D3,3				D0,39						r				
 				d1,20										
 				U1,0										
-truck machine .. 1
-				D1,4										
+				D1,39						R	r			
 				d2,20										
 				U2,0										
-truck machine .. 2
-D1,1	D2			D2,4										
-				P4										
+D0,1	D2			D2,39							R	r		
+				X								R		
+D2,1	D2							G3,0				B3,4		
+D2,2											A			
+				P4			a3,2				B3,4			
 				d0,20										
 				U0,0										
-truck machine .. 0
-				D0,4										
-				d1,20										
+D1,1				D0,40						r				
+				d1,19										
 				U1,0										
-truck machine .. 1
-				D1,4										
-				d2,20										
+				D1,39						R	r			
+				d2,19										
 				U2,0										
-truck machine .. 2
-				D2,4										
-D1,3	D2			F										
-D0,3														
-D0,3		W											L0	
-													t1,5	
-	D2												T1,5	
-D3,1	F	W											t2,5	
-D2,1														
-D2,3														
-D0,1														
+	D2			D2,38										
+D3,1	F			F						B3,4	R	r		
+						G3,0					A	R		
+D2,1							a3,2				B3,4			
 D0,2														
 D3,3														
 D1,1														
@@ -65,86 +50,89 @@ D3,2
 D3,2														
 D3,3														
 D3,1														
-D0,2														
-D0,2														
+D0,2		W											L0	
+D0,2													t1,5	
+D1,1		W					F						T1,5	
+D3,2													t2,5	
 D1,1														
+D1,3														
 D0,2														
-D2,1		W											T2,5	
+D2,3		W											T2,5	
 													t3,5	
-		W											T3,5	
-													t0,5	
-D1,1						A3,5							T0,5	
-D2,3														
-D3,2														
-D3,2														
+		W										B3,4	T3,5	
+D1,2								B3,3	B0,3	B0,4		A	t0,5	
+D1,2								A3,3	B0,1	B0,3		B3,3		
+D0,3		W										B3,2	T0,5	
+													t3,7	
+								B3,1		A			T3,7	
+D0,1										B3,3				
+D3,1		W				A3,5			B0,6	B0,2			t2,7	
+D2,2						B3,3				B3,2				
+D2,3									B0,4	B0,1			T2,7	
+D1,1						B3,1		B3,6		B3,1		B3,1		
+D3,3		W						B3,4	B0,2	B0,0		B3,0	t0,7	
+D0,1														
+D1,3														
 D3,2														
 D1,2														
+D2,3														
 D3,3														
+D2,2														
+D0,3		W											L0	
+D1,2													t0,5	
+D1,3														
 D0,2														
-D0,3														
-D0,1														
-D1,1														
+D0,3													T0,5	
 D1,2														
-D2,2														
-D3,2														
 D0,1														
 D2,2														
-D1,2														
-D2,3														
 D0,2														
 D1,1														
-D0,3														
-D1,2														
-D3,3														
-D1,3														
-D2,3														
-D0,1														
-D2,3														
-D3,2														
-D1,3														
-D0,3														
-D3,1														
-D2,2														
-D3,1														
-D3,2														
-D2,3														
-D1,3														
-D0,2														
-D0,3														
-D1,2														
-D0,3														
-D1,2														
-D1,2														
-D3,1														
-D3,2														
-D0,1														
-D2,2														
-D0,2														
 D2,1														
+D2,1														
+D2,2														
+D1,2														
+D3,3														
+D1,1														
+D3,1														
+D1,1														
+D1,1														
+D2,1														
+D0,2														
+D0,3														
+D3,1														
+D0,1														
+D2,1														
+D3,3														
+D3,2														
+D3,3														
+D1,3														
+D2,2														
+D1,2														
+D3,3														
+D3,2														
+D1,2														
 D2,3														
+D0,3														
+D2,2														
 D1,2														
 D3,2														
-D2,3														
-D3,1														
-D0,2														
-D2,3														
-D3,2														
-D2,3														
-D1,1														
-D2,2														
-D3,1														
-D3,3														
-D3,1														
-D1,3														
-D2,3														
-D3,3														
-D2,2														
-D2,2														
 D0,3														
-D3,3														
-D3,1														
-D1,1														
-D0,2														
-D1,1														
 D2,2														
+D3,3														
+D0,2														
 D0,1														
+D1,1														
+D1,1														
+D1,2														
+D3,1														
+D1,2														
+D0,1														
+D3,3														
+D1,2														
+D1,1														
+D2,1														
+D0,3														
+D1,3														
+D0,1														
+D2,3														

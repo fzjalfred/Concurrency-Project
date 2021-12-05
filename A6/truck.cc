@@ -17,7 +17,7 @@ Truck::~Truck() {}
 void Truck::main() {
     PRINT(Printer::Kind::Truck,'S');
     VendingMachine **mch_list =  nameServer.getMachineList();
-    for (;;) {
+    for (int a = 0;a<20;a++) {
         _Accept(~Truck) {
             break;
         } _Else;
@@ -33,9 +33,6 @@ void Truck::main() {
         PRINT(Printer::Kind::Truck,'P', 4);
         
         for (uint i = 0; i<numVendingMachines; i++) {
-            _Accept(~Truck) {
-                break;
-            } _Else;
             VendingMachine* machine = mch_list[i];
             unsigned int *stock = machine->inventory();
             uint total_remain = 0;
