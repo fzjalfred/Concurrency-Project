@@ -86,6 +86,12 @@ void VendingMachine::main(){
         } _Finally {
         }   // try     
     }   // for
-
+    
+    _Accept(inventory) { // release truck.
+        PRINT(Printer::Kind::Vending, id, 'r');
+        _Accept(restocked) {
+                PRINT(Printer::Kind::Vending, id, 'R');
+        }
+    }
     PRINT(Printer::Kind::Vending, id, 'F');
 }

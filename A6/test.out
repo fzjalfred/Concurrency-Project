@@ -1,138 +1,1206 @@
 Parent	Gropoff	WATOff	Names	Truck	Plant	Stud0	Stud1	Stud2	Stud3	Mach0	Mach1	Mach2	Cour0	
 *******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	
-S	S	S	S	S		S3,5	S3,2	S3,7	S0,8	S	S	S	S	
-			R0											
-D3,1		W	R1										t0,5	
-			R2			V0								
-			N0,0				V1							
-D3,3			N1,1					V2						
-			N2,2						V0					
-D1,2			N3,0	P4										
-				d0,396										
+S	S	S	S	S	S								S	
+			R0		G7	S3,7	S0,8	S3,3	S0,2	S	S	S		
+D3,1		W	R1		G10								t0,5	
+			R2		G9	V0								
+			N0,0		G5		V1							
+D1,1			N1,1					V2						
+			N2,2		G8				V0					
+Truck is spinning ...
+D0,1			N3,0		G4									
+D2,2	D2				G3					A				
+inventory is block ...
+				P3						B0,98				
+				d0,395										
 				U0,0										
-				D0,416						r				
+Truck is blocking ...
+				D0,378	P									
+Truck is ending ...
+Truck is spinning ...
+D3,1					G9				a0,2	r				
+	D2				G7					R				
+inventory is block ...
+D3,3				P7	G7			G3,0				B3,98		
 				d1,396										
 				U1,0										
-D3,3	D2			D1,792						R	r			
-				d2,396										
+Truck is blocking ...
+				D1,383						A				
+					P					B0,4				
+Truck is ending ...
+Truck is spinning ...
+D0,2					G4						r			
+D2,1	D2				G5				a0,2		R			
+inventory is block ...
+				P8	G8		G0,0				B0,4			
+				d2,395										
 				U2,0										
-				D2,1168					G0,0	B0,4	R	r		
-				P4								R		
-				d0,19										
-				U0,0										
-D3,3				D0,39						r				
-				d1,20										
-				U1,0										
-				D1,39						R	r			
-				d2,20										
-				U2,0										
-D0,1	D2			D2,39							R	r		
-				X								R		
-D2,1	D2							G3,0				B3,4		
-D2,2											A			
-				P4			a3,2				B3,4			
-				d0,20										
-				U0,0										
-D1,1				D0,40						r				
+Truck is blocking ...
+D1,2				D2,383	P									
+Truck is ending ...
+Truck is spinning ...
+					G4							r		
+	D2				G4							R		
+inventory is block ...
+D1,1	F			P4	P	G3,0				B3,4				
+				d0,18	G10									
+				U0,1										
+Truck is blocking ...
+Truck is ending ...
+Truck is spinning ...
+D1,2				D0,3	G5					r				
+D2,1					G3					R				
+D1,2					G10									
+inventory is block ...
+				P4	G4									
 				d1,19										
 				U1,0										
-				D1,39						R	r			
-				d2,19										
+Truck is blocking ...
+D2,1				D1,3	P									
+Truck is ending ...
+Truck is spinning ...
+					G8						r			
+inventory is block ...
+				P8							R			
+				d2,20										
 				U2,0										
-	D2			D2,38										
-D3,1	F			F						B3,4	R	r		
-						G3,0					A	R		
-D2,1							a3,2				B3,4			
-D0,2														
-D3,3														
-D1,1														
-D3,2														
-D3,2														
-D3,3														
-D3,1														
-D0,2		W											L0	
-D0,2													t1,5	
-D1,1		W					F						T1,5	
-D3,2													t2,5	
-D1,1														
-D1,3														
-D0,2														
-D2,3		W											T2,5	
+Truck is blocking ...
+D1,3				D2,8	P									
+Truck is ending ...
+Truck is spinning ...
+					G7							r		
+D3,3					G5							R		
+inventory is block ...
+D0,3				P5	G5									
+				d0,19										
+				U0,1										
+Truck is blocking ...
+		W		D0,5									T0,5	
+													t1,5	
+					P								T1,5	
+Truck is ending ...
+Truck is spinning ...
+		W			G5					r			t2,5	
+		W			G6		B0,3			R	B0,4		T2,5	
 													t3,5	
-		W										B3,4	T3,5	
-D1,2								B3,3	B0,3	B0,4		A	t0,5	
-D1,2								A3,3	B0,1	B0,3		B3,3		
-D0,3		W										B3,2	T0,5	
-													t3,7	
-								B3,1		A			T3,7	
-D0,1										B3,3				
-D3,1		W				A3,5			B0,6	B0,2			t2,7	
-D2,2						B3,3				B3,2				
-D2,3									B0,4	B0,1			T2,7	
-D1,1						B3,1		B3,6		B3,1		B3,1		
-D3,3		W						B3,4	B0,2	B0,0		B3,0	t0,7	
+inventory is block ...
+D0,1				P6		B3,3		B3,3	F	B3,4		B3,4	T3,5	
+				d1,19										
+				U1,1										
+Truck is blocking ...
+				D1,6	P									
+Truck is ending ...
+Truck is spinning ...
+D3,1					G6	B3,1				B3,3	r			
+					G5						R			
+D2,3							B0,1	B3,1			B0,3	B3,3		
+inventory is block ...
+		W		P5	P			F					t0,7	
+				d2,18	G8									
+				U2,0										
+Truck is blocking ...
+Truck is ending ...
+Truck is spinning ...
+D3,3				D2,3	G10							r		
+D3,3					G6							R		
+inventory is block ...
+D3,1				P4	G4									
+				d0,17										
+				U0,2										
+Truck is blocking ...
+				D0,3	P									
+Truck is ending ...
+Truck is spinning ...
+					G4					r				
+D1,1					G3					R				
+D3,3					G3									
+inventory is block ...
+				P4	G4									
+				d1,18										
+				U1,1										
+Truck is blocking ...
+D0,2				D1,3	P									
+Truck is ending ...
+Truck is spinning ...
+					G2						r			
+D2,1					G5						R			
+					G8									
+D0,3		W			G4								T0,7	
+													t1,7	
+inventory is block ...
+				P4						B3,2			L1	
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,4	P	B3,6								
+Truck is ending ...
+Truck is spinning ...
+D2,1		W			G2							r	t1,5	
+D1,1					G5							R		
+					G0									
+inventory is block ...
+D3,3				P5	G5	B3,4				B3,1				
+				d0,16										
+				U0,1										
+Truck is blocking ...
+				D0,2	P									
+Truck is ending ...
+Truck is spinning ...
+D0,1					G9					r				
+					G8					R				
+inventory is block ...
+D1,3				P5	G5	B3,2				B3,3				
+				d1,19										
+				U1,0										
+Truck is blocking ...
+				D1,4	P									
+Truck is ending ...
+Truck is spinning ...
+D0,3					G4						r			
+					G5	B3,0				B3,2	R			
+inventory is block ...
+D2,1				P5		F								
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,5	P									
+Truck is ending ...
+Truck is spinning ...
+					G10							r		
+D0,2					G3							R		
+inventory is block ...
+D3,1				P5	G5									
+				d0,17										
+				U0,3										
+Truck is blocking ...
+				D0,5	P									
+Truck is ending ...
+Truck is spinning ...
+D2,2					G7					r				
+inventory is block ...
+				P7						R				
+				d1,20										
+				U1,0										
+Truck is blocking ...
+				D1,7	P									
+Truck is ending ...
+Truck is spinning ...
+D0,2					G5						r			
+					G7						R			
+D0,1					G4									
+inventory is block ...
+D2,2				P5	G5									
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,5	P									
+				X	G5							r		
+D1,1					G7						A	R	T1,5	
+D0,3					G6		A0,5				B0,4			
+Truck is ending ...
+Truck is spinning ...
+					G6									
+D0,1					G6		B0,3				B0,3			
+inventory is block ...
+D1,2				P3	G3									
+				d0,17										
+				U0,2										
+Truck is blocking ...
+				D0,2	P									
+Truck is ending ...
+Truck is spinning ...
+					G6					r	B0,2			
+D0,2					G6		B0,1			R				
+D3,2					G5									
+inventory is block ...
+D1,3				P4	G4									
+					P									
+				d1,17	G8									
+				U1,3										
+Truck is blocking ...
+Truck is ending ...
+Truck is spinning ...
+		W		D1,4	G4						r		t1,7	
+inventory is block ...
+D0,2				P4							R			
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,4	P									
+Truck is ending ...
+Truck is spinning ...
+D2,3					G5							r		
+					G10							R		
+D3,3					G4									
+inventory is block ...
+D2,3				P7	G7									
+				d0,18										
+				U0,2										
+Truck is blocking ...
+				D0,7	P									
+Truck is ending ...
+Truck is spinning ...
+					G1					r				
+D2,2					G4					R				
+D2,3					G6									
+inventory is block ...
+D0,3				P7	G7									
+				d1,17										
+				U1,1										
+Truck is blocking ...
+				D1,5	P									
+Truck is ending ...
+Truck is spinning ...
+					G1						r			
+D0,2					G9						R			
+inventory is block ...
+D0,1				P6	G6									
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,6	P									
+Truck is ending ...
+Truck is spinning ...
+					G2							r		
+inventory is block ...
+D3,2				P8	G8							R		
+				d0,18										
+				U0,0										
+Truck is blocking ...
+D0,3				D0,6	P									
+Truck is ending ...
+Truck is spinning ...
+					G3					r				
+inventory is block ...
+D1,2				P6	G6					R	B0,3		T1,7	
+					P									
+D1,2				d1,18	G10		B0,6							
+				U1,1										
+Truck is blocking ...
+Truck is ending ...
+Truck is spinning ...
+				D1,5	G6						r			
+inventory is block ...
+D1,1				P6							R			
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,6							A			
+					P						B0,3			
+Truck is ending ...
+Truck is spinning ...
+					G7							r		
+							A0,6					R		
+inventory is block ...
+D1,1				P5	G5		F							
+				d0,20										
+				U0,0										
+Truck is blocking ...
+				D0,5	P									
+Truck is ending ...
+Truck is spinning ...
+D1,3					G3					r				
+VendingMachine is ending ...0
+										R				
+inventory is block ...
+D0,3				P4	G4					F				
+				d1,18										
+				U1,1										
+Truck is blocking ...
+				D1,3	P						r			
+Truck is ending ...
+Truck is spinning ...
+VendingMachine is ending ...1
+D3,2					G4						R			
+inventory is block ...
+D2,2				P7	G7						F			
+				d2,20										
+				U2,0										
+Truck is blocking ...
+				D2,7	P									
+Truck is ending ...
+Truck is spinning ...
+					G3							r		
+VendingMachine is ending ...2
+												R		
+D0,2					G7							F		
+BottlingPlant is shutting down ...
+D2,3					F									
+D1,1														
+D1,1														
+D1,2														
+D3,2														
+D1,2														
+D3,1														
+D2,3														
+D0,3														
 D0,1														
 D1,3														
+D1,2														
+D2,2														
+D1,3														
+D1,2														
+D1,1														
+D3,1														
+D1,1														
+D2,2														
+D0,1														
+D2,3														
+D2,2														
+D3,1														
+D0,2														
+D2,2														
+D0,1														
+D0,2														
+D3,2														
+D0,2														
+D2,3														
+D0,2														
+D0,2														
+D1,1														
+D2,1														
+D2,1														
+D0,2														
+D1,2														
+D2,2														
+D0,3														
+D1,1														
+D2,2														
+D3,2														
+D3,3														
+D3,3														
+D2,1														
+D2,2														
+D0,2														
+D2,1														
+D0,3														
+D2,3														
+D0,3														
+D1,1														
+D3,2														
+D0,2														
+D2,3														
+D2,2														
+D0,2														
+D3,2														
+D0,1														
+D0,1														
+D3,3														
+D0,2														
+D1,1														
+D3,1														
+D2,3														
+D3,3														
+D2,1														
+D3,3														
+D1,2														
+D0,3														
+D0,1														
+D2,3														
+D3,3														
+D3,2														
+D3,1														
+D2,1														
+D0,3														
+D0,2														
+D3,2														
+D0,2														
+D1,1														
+D0,1														
+D1,1														
+D3,3														
+D3,2														
+D2,3														
+D3,2														
+D1,1														
+D0,1														
+D3,3														
+D1,3														
+D1,3														
+D1,2														
+D3,1														
+D1,2														
+D0,2														
+D2,1														
+D1,2														
+D0,1														
+D0,3														
+D1,1														
+D3,1														
+D2,2														
+D0,1														
+D3,1														
+D3,2														
+D2,3														
+D1,1														
+D1,1														
+D3,1														
+D0,2														
+D3,2														
+D0,2														
+D3,2														
+D1,3														
+D2,2														
+D2,3														
+D1,1														
+D2,1														
+D1,1														
+D3,2														
+D0,1														
+D2,3														
+D3,3														
+D1,1														
+D2,1														
+D3,1														
+D1,2														
+D0,2														
+D0,1														
+D1,1														
+D1,3														
+D3,3														
+D2,3														
+D3,1														
+D2,3														
+D1,1														
+D1,3														
+D0,3														
+D2,2														
+D1,1														
+D3,3														
+D3,3														
+D2,3														
+D2,1														
+D2,2														
+D0,1														
+D1,3														
+D3,3														
+D1,1														
+D1,3														
+D2,3														
+D1,3														
+D1,1														
+D1,3														
+D1,1														
+D0,2														
+D2,2														
+D0,3														
+D2,2														
+D2,2														
+D0,2														
+D1,1														
+D3,1														
+D0,3														
+D3,3														
+D3,2														
+D1,3														
+D2,1														
+D2,2														
+D1,1														
+D3,1														
+D3,3														
+D0,3														
+D2,2														
+D2,2														
+D3,3														
+D2,1														
+D1,1														
+D2,1														
+D0,2														
+D2,3														
+D2,3														
+D3,1														
+D1,2														
+D0,1														
+D3,3														
+D1,2														
+D2,3														
+D3,2														
+D0,3														
+D1,3														
+D2,3														
+D0,1														
+D0,3														
+D2,3														
+D3,1														
+D0,1														
+D2,2														
+D1,2														
+D2,2														
+D1,1														
+D0,2														
+D0,2														
+D0,3														
+D1,3														
+D3,1														
+D3,2														
+D3,1														
+D3,1														
+D1,2														
+D3,1														
+D3,3														
+D3,2														
+D2,3														
+D1,2														
+D1,2														
+D3,2														
+D0,2														
+D1,2														
+D3,2														
+D1,1														
+D3,1														
+D0,1														
+D1,3														
+D2,2														
+D2,1														
+D1,3														
+D2,3														
+D1,2														
+D3,2														
+D1,3														
+D1,2														
+D0,3														
+D3,2														
+D3,1														
+D0,2														
+D3,2														
+D3,1														
+D1,1														
+D1,1														
+D0,1														
+D0,1														
+D0,2														
+D0,3														
+D2,1														
+D1,2														
+D0,3														
+D3,2														
+D2,2														
+D0,1														
+D2,2														
+D2,3														
+D3,2														
+D0,3														
+D0,3														
+D3,3														
+D0,1														
+D2,1														
+D1,1														
+D3,2														
+D0,2														
+D3,3														
+D2,1														
+D2,1														
+D1,1														
+D0,3														
+D2,1														
+D3,1														
+D2,2														
+D2,2														
+D3,3														
+D2,3														
+D3,2														
+D2,2														
+D3,2														
+D1,1														
+D1,3														
+D2,2														
+D0,1														
+D0,2														
+D3,2														
+D2,3														
+D0,3														
+D0,1														
+D2,3														
+D1,3														
+D1,3														
+D3,3														
+D2,3														
+D1,1														
+D2,1														
+D2,2														
+D3,2														
+D2,2														
+D0,2														
+D3,2														
+D2,2														
+D3,1														
+D2,3														
+D1,1														
+D1,3														
+D0,1														
+D2,1														
+D2,3														
+D2,2														
+D2,1														
+D2,3														
+D0,1														
+D0,1														
+D3,1														
+D0,1														
+D3,1														
+D0,1														
+D3,2														
+D2,2														
+D1,1														
+D2,1														
+D0,2														
+D3,1														
+D3,1														
+D2,3														
+D3,1														
+D0,1														
+D1,2														
+D3,3														
+D0,3														
+D3,1														
+D1,1														
+D3,2														
+D2,2														
+D3,2														
+D1,1														
+D1,2														
+D0,3														
+D2,3														
+D1,2														
+D2,2														
+D2,1														
+D2,2														
+D2,3														
+D1,2														
+D2,3														
+D1,2														
+D1,3														
+D2,1														
+D3,3														
+D1,1														
+D1,3														
+D3,1														
+D1,1														
+D1,2														
+D1,2														
+D2,1														
+D3,1														
+D2,3														
+D2,3														
+D0,3														
+D0,2														
+D3,1														
+D3,1														
+D2,2														
+D3,3														
+D1,1														
+D0,3														
+D2,2														
+D3,1														
+D3,2														
+D2,3														
+D2,3														
+D3,1														
+D3,2														
+D3,3														
+D2,1														
+D3,3														
+D3,1														
+D2,3														
+D1,2														
+D2,2														
+D1,3														
+D3,3														
+D0,3														
+D2,1														
+D0,1														
+D1,1														
+D3,2														
+D2,2														
+D1,2														
+D2,1														
+D2,1														
+D3,3														
+D3,3														
+D3,3														
+D1,3														
+D3,2														
+D3,3														
+D2,1														
+D0,2														
+D1,1														
+D0,3														
+D2,1														
+D0,2														
+D0,3														
+D0,2														
+D2,2														
+D0,1														
+D0,2														
+D2,3														
+D2,1														
+D1,1														
+D3,2														
+D2,1														
+D0,3														
+D2,1														
+D1,2														
+D0,1														
+D1,3														
+D1,1														
+D0,3														
+D1,2														
+D1,2														
+D0,2														
+D1,2														
+D0,2														
+D3,2														
+D1,1														
+D2,3														
+D2,2														
+D2,2														
+D2,2														
+D1,3														
+D2,1														
+D1,3														
+D2,3														
+D3,1														
+D3,2														
+D0,1														
+D2,3														
+D3,3														
+D1,3														
+D1,2														
+D1,1														
+D3,1														
+D0,3														
+D0,1														
+D1,3														
+D3,3														
+D0,1														
+D3,1														
+D3,2														
+D1,1														
+D2,3														
+D3,1														
+D3,1														
+D2,2														
+D1,2														
+D1,1														
+D1,2														
+D3,3														
+D2,2														
+D1,1														
+D2,1														
+D1,2														
+D1,2														
+D3,3														
+D1,3														
+D2,3														
+D2,3														
+D1,1														
+D2,1														
+D1,1														
+D1,2														
+D2,1														
+D2,2														
+D2,3														
+D2,1														
+D3,2														
+D1,2														
+D3,1														
+D2,1														
+D0,3														
+D2,1														
+D1,1														
+D3,3														
+D3,2														
+D3,3														
+D1,1														
+D0,2														
+D1,3														
+D3,3														
+D3,2														
+D3,2														
+D3,2														
+D2,3														
+D3,1														
+D1,2														
+D3,2														
+D0,3														
+D3,2														
+D1,2														
+D1,1														
+D2,2														
+D2,3														
+D2,3														
+D2,2														
+D0,1														
+D3,3														
+D1,1														
+D0,1														
+D1,3														
+D3,3														
+D0,2														
+D0,3														
+D2,3														
+D3,3														
+D1,3														
+D2,1														
+D3,3														
+D3,2														
+D3,3														
+D1,2														
+D1,2														
+D2,3														
+D0,3														
+D0,2														
+D2,3														
+D0,3														
+D1,3														
+D2,3														
+D0,2														
+D2,3														
+D2,2														
+D3,1														
+D3,3														
+D1,1														
+D0,3														
+D1,3														
+D2,2														
+D0,3														
+D0,2														
+D0,3														
+D2,2														
+D1,2														
+D2,2														
+D2,1														
+D3,2														
+D0,2														
+D0,1														
+D0,2														
+D1,3														
+D0,1														
+D3,2														
+D3,2														
+D0,3														
+D0,1														
+D2,1														
+D0,2														
+D0,2														
+D3,3														
+D3,2														
+D0,3														
+D2,1														
+D1,3														
+D3,3														
+D0,2														
+D1,3														
+D3,3														
+D2,3														
+D2,1														
+D1,2														
+D3,1														
+D1,3														
+D3,1														
+D0,3														
+D2,1														
+D2,2														
+D3,3														
+D0,1														
+D0,1														
+D0,2														
+D1,1														
+D3,2														
+D0,2														
+D0,3														
+D0,3														
+D3,1														
+D0,3														
+D1,1														
+D2,3														
+D2,2														
+D1,3														
+D1,2														
+D0,3														
+D3,3														
+D2,3														
+D1,3														
+D0,2														
+D3,3														
+D0,2														
+D1,3														
+D3,1														
+D1,2														
+D1,3														
+D2,2														
+D1,2														
+D3,1														
+D2,2														
+D2,1														
+D3,2														
+D3,1														
+D2,3														
+D0,3														
+D0,3														
+D2,2														
+D2,1														
+D1,2														
+D3,2														
+D0,1														
+D0,1														
+D0,3														
+D3,1														
+D1,1														
+D2,2														
+D3,2														
+D0,3														
+D2,2														
+D2,2														
+D0,3														
+D3,1														
+D2,3														
+D0,1														
+D1,1														
+D2,2														
+D2,2														
+D1,1														
+D0,1														
+D1,1														
+D2,2														
+D0,3														
+D3,3														
+D2,2														
+D2,3														
+D0,1														
+D1,2														
+D2,1														
+D1,2														
+D3,1														
+D0,3														
+D2,1														
+D1,1														
+D2,3														
+D1,1														
 D3,2														
 D1,2														
 D2,3														
 D3,3														
-D2,2														
-D0,3		W											L0	
-D1,2													t0,5	
+D2,3														
 D1,3														
-D0,2														
-D0,3													T0,5	
-D1,2														
 D0,1														
-D2,2														
+D0,3														
 D0,2														
-D1,1														
-D2,1														
-D2,1														
-D2,2														
-D1,2														
+D2,3														
 D3,3														
 D1,1														
+D3,3														
+D0,3														
+D1,2														
+D3,3														
+D0,1														
+D2,1														
+D1,3														
+D1,3														
+D3,2														
+D1,2														
+D0,2														
+D3,1														
 D3,1														
 D1,1														
+D3,3														
+D3,1														
+D3,3														
+D3,2														
+D2,2														
+D2,2														
+D1,3														
+D1,3														
 D1,1														
-D2,1														
+D3,2														
+D3,1														
+D1,1														
+D2,2														
+D0,1														
+D1,2														
+D3,3														
+D0,1														
+D3,3														
+D0,1														
+D2,2														
+D3,2														
+D2,3														
+D2,3														
+D3,3														
+D1,2														
 D0,2														
 D0,3														
+D2,1														
+D2,3														
+D2,2														
+D2,3														
+D3,3														
+D2,2														
+D2,2														
+D3,1														
+D1,2														
+D2,1														
+D0,3														
+D2,1														
+D3,1														
+D2,2														
+D0,3														
+D2,2														
+D2,1														
+D2,2														
+D1,1														
+D0,3														
+D0,2														
+D0,1														
+D1,1														
+D3,3														
+D1,1														
+D3,1														
+D2,1														
+D3,2														
+D1,3														
+D0,1														
+D3,2														
+D3,2														
+D3,2														
+D0,3														
+D1,2														
+D1,2														
+D0,3														
+D3,3														
+D3,2														
+D1,2														
+D1,3														
+D0,1														
+D2,3														
+D2,2														
+D1,3														
+D2,3														
+D1,3														
+D1,3														
+D0,1														
+D1,1														
+D3,2														
+D1,3														
+D3,2														
 D3,1														
 D0,1														
-D2,1														
+D1,2														
+D1,1														
 D3,3														
+D3,1														
+D2,3														
 D3,2														
-D3,3														
+D1,1														
+D3,2														
+D0,3														
+D1,1														
+D0,2														
 D1,3														
 D2,2														
-D1,2														
 D3,3														
 D3,2														
+D0,3														
+D3,1														
+D1,3														
+D1,1														
+D1,3														
+D1,1														
+D3,2														
+D1,2														
+D0,3														
+D2,2														
+D2,2														
+D2,2														
 D1,2														
 D2,3														
-D0,3														
-D2,2														
+D1,3														
+D0,1														
+D3,1														
+D2,3														
+D1,3														
+D1,3														
 D1,2														
-D3,2														
 D0,3														
 D2,2														
+D1,1														
+D0,2														
+D1,3														
+D0,1														
+D3,1														
+D2,1														
+D1,3														
+D2,2														
+D2,3														
+D2,2														
+D3,1														
+D2,1														
+D1,2														
+D2,3														
+D3,2														
+D3,3														
+D2,2														
+D3,1														
+D2,1														
+D1,1														
 D3,3														
 D0,2														
-D0,1														
-D1,1														
 D1,1														
 D1,2														
+D0,1														
+D0,1														
+D2,3														
 D3,1														
-D1,2														
-D0,1														
-D3,3														
-D1,2														
+D2,3														
+D3,1														
 D1,1														
 D2,1														
 D0,3														
 D1,3														
+D0,3														
+D3,1														
+D1,3														
 D0,1														
+D0,2														
+D2,1														
+D3,2														
+D1,1														
+D2,1														
+D0,2														
+D3,2														
+D2,2														
+D3,2														
+D3,1														
+D3,2														
+D3,1														
+D0,3														
+D1,3														
+D2,1														
+D0,2														
+D3,2														
+D2,3														
+D3,1														
+D1,2														
+D0,2														
+D1,2														
+D2,2														
+D3,2														
+D1,2														
+D3,2														
+D2,3														
+D0,2														
+D2,3														
+D3,2														
+D1,3														
+D2,2														
+D1,2														
+D3,2														
+D0,2														
+D0,2														
+D0,1														
+D2,1														
+D0,1														
+D0,1														
+D2,1														
+D0,2														
 D2,3														

@@ -64,7 +64,7 @@ int main(int argc, char const *argv[])
         BottlingPlant plant(prt, nameServer, 
             cparms.numVendingMachines, cparms.maxShippedPerFlavour, 
             cparms.maxStockPerFlavour, cparms.timeBetweenShipments);
-        Truck truck(prt, nameServer, plant, cparms.numVendingMachines, cparms.maxStockPerFlavour);
+        
         
         /* initialize all vending machines */
         for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){

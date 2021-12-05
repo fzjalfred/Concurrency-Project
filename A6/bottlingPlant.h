@@ -1,6 +1,7 @@
 #pragma once
 #include "printer.h"
 #include "nameServer.h"
+#include "truck.h"
 
 _Task BottlingPlant {
     Printer & prt;
@@ -10,7 +11,9 @@ _Task BottlingPlant {
     unsigned int maxStockPerFlavour;
     unsigned int timeBetweenShipments;
 
-
+    Truck truck;
+    bool is_shutdown = false;
+    uint production[4] = {0};
 
     void main();
     public:
