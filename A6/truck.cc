@@ -22,7 +22,7 @@ void Truck::main() {
     for (uint i = 0;;i++) {
         if (i == numVendingMachines) {
             i = 0;
-        }
+        } // reset machine counter and restock the macines in a cycle.
         
         yield(rng(1,10));
         try {
@@ -52,7 +52,7 @@ void Truck::main() {
         uint total_remain = 0;
         for (int c = 0; c<4; c++) {
             total_remain+= stock[c];
-        }
+        } // calculate the remain inventory in this machine.
         PRINT(Printer::Kind::Truck,'d', i, total_remain);
         
         uint total_lack = 0;
@@ -65,13 +65,13 @@ void Truck::main() {
                 total_lack+=maxStockPerFlavour - stock[c];
                 sodaList[c] = 0;
             }
-        }
+        } // calculate the lack to fullfill this machine.
         
         PRINT(Printer::Kind::Truck,'U', i, total_lack);
         uint cargo_remain = 0;
         for (int c = 0; c<4; c++) {
             cargo_remain+= sodaList[c];
-        }
+        } // calculate the cargo remain in the truck.
         PRINT(Printer::Kind::Truck,'D', i, cargo_remain);
         machine->restocked(); // restock is completed.
         

@@ -91,10 +91,9 @@ void WATCardOffice::main(){
             break;
         } or _Accept ( create, transfer ) {
             if (!waiting.empty()) {
-                std::cout<<"+1"<<std::endl; 
                 waiting.signal();
             }
-        } or _When( requests.size() ) _Accept ( requestWork ) {
+        } or _When( requests.size() ) _Accept ( requestWork ) { // block for a student's request
             
         } 
     } // for 

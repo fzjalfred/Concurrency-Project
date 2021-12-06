@@ -45,8 +45,9 @@ _Nomutex unsigned int VendingMachine::getId() const{
 }
 
 void VendingMachine::main(){
-    PRINT(Printer::Kind::Vending, id,'S');
+    
     nameServer.VMregister(this);
+    PRINT(Printer::Kind::Vending, id,'S', sodaCost);
     for (;;){
         try{
             _Accept(~VendingMachine){break;}
@@ -61,8 +62,8 @@ void VendingMachine::main(){
                     _Accept(restocked) {
                         PRINT(Printer::Kind::Vending, id, 'R');
                 }
-            }
-        }   catch(uMutexFailure::RendezvousFailure &){  // exp buy TODO for restocking and funding
+            } // block for restock. //OUPUT fix TODO
+        }   catch(uMutexFailure::RendezvousFailure &){
             switch (flag)
             {
             case VendingMachine::Status::free:
@@ -78,7 +79,7 @@ void VendingMachine::main(){
                     _Accept(restocked) {
                         PRINT(Printer::Kind::Vending, id, 'R');
                     }
-                }
+                } // block for restock.
                 break;
             default:
                 break;

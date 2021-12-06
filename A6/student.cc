@@ -17,6 +17,9 @@ void Student::main(){
     PRINT(Printer::Kind::Student,id,'S',flavour, sodaToBuy);
     WATCard::FWATCard giftCard = groupoff.giftCard();
     WATCard::FWATCard watCard = cardOffice.create(id, 5);
+
+    PRINT(Printer::Kind::WATCardOffice,'C', id, 5);
+
     WATCard* card = nullptr;                            // which card to use
     // obtain the location of vending machine
     VendingMachine* machine = nameServer.getMachine(id);
@@ -43,7 +46,7 @@ void Student::main(){
                 
             }
         }   else{   // watcard is aviliable
-            REBUY:
+            
             try{
                 card = watCard();
                 machine->buy(flavour, *card);
@@ -54,13 +57,15 @@ void Student::main(){
                 PRINT(Printer::Kind::Student,id,'A', flavour, card->getBalance());
                 numPurchased++;
             }   catch(WATCardOffice::Lost &e){
+                PRINT(Printer::Kind::Student,id,'L');
                 watCard = cardOffice.create(id, 5);
-                goto REBUY;
+                PRINT(Printer::Kind::WATCardOffice,'C', id, 5);
+                
             }   catch(VendingMachine::Funds&){
                 watCard = cardOffice.transfer(id, machine->cost() + 5, card);
-                goto REBUY;
+                PRINT(Printer::Kind::WATCardOffice,'T', id, machine->cost() + 5);
             }   catch(VendingMachine::Stock&){
-                goto REBUY;
+                
             }
         }   // if
     } // for
