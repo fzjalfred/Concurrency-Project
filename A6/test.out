@@ -1,1206 +1,358 @@
 Parent	Gropoff	WATOff	Names	Truck	Plant	Stud0	Stud1	Stud2	Stud3	Mach0	Mach1	Mach2	Cour0	
 *******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	*******	
 S	S	S	S	S	S								S	
-			R0		G7	S3,7	S0,8	S3,3	S0,2	S	S	S		
-D3,1		W	R1		G10								t0,5	
-			R2		G9	V0								
-			N0,0		G5		V1							
-D1,1			N1,1					V2						
-			N2,2		G8				V0					
-Truck is spinning ...
-D0,1			N3,0		G4									
-D2,2	D2				G3					A				
-inventory is block ...
-				P3						B0,98				
-				d0,395										
+		C0,5	R0		G6	S3,8	S1,3	S2,6	S1,4	S2	S2			
+D0,2		W	R1		G3							S2	t0,5	
+		C1,5	R2		G9	V0								
+		C2,5	N0,0		G5		V1							
+D1,2		C3,5	N1,1					V2						
+			N2,2		G4				V0					
+inventory block ...
+D2,1	D2		N3,0	P5	G5									
+				d0,396										
 				U0,0										
-Truck is blocking ...
-				D0,378	P									
-Truck is ending ...
-Truck is spinning ...
-D3,1					G9				a0,2	r				
-	D2				G7					R				
-inventory is block ...
-D3,3				P7	G7			G3,0				B3,98		
-				d1,396										
+restocked block ...
+D1,2				D0,381	P									
+					G6					r		B2,98		
+D2,1					G3			G2,0		R				
+	D2				G5									
+D1,2					G10						A			
+inventory block ...
+				P10							B1,98			
+				d1,395										
 				U1,0										
-Truck is blocking ...
-				D1,383						A				
-					P					B0,4				
-Truck is ending ...
-Truck is spinning ...
-D0,2					G4						r			
-D2,1	D2				G5				a0,2		R			
-inventory is block ...
-				P8	G8		G0,0				B0,4			
+restocked block ...
+				D1,385	P		a1,2							
+D1,2					G7						r			
+inventory block ...
+				P7							R			
 				d2,395										
 				U2,0										
-Truck is blocking ...
-D1,2				D2,383	P									
-Truck is ending ...
-Truck is spinning ...
-					G4							r		
-	D2				G4							R		
-inventory is block ...
-D1,1	F			P4	P	G3,0				B3,4				
-				d0,18	G10									
-				U0,1										
-Truck is blocking ...
-Truck is ending ...
-Truck is spinning ...
-D1,2				D0,3	G5					r				
-D2,1					G3					R				
-D1,2					G10									
-inventory is block ...
-				P4	G4									
-				d1,19										
-				U1,0										
-Truck is blocking ...
-D2,1				D1,3	P									
-Truck is ending ...
-Truck is spinning ...
-					G8						r			
-inventory is block ...
-				P8							R			
-				d2,20										
-				U2,0										
-Truck is blocking ...
-D1,3				D2,8	P									
-Truck is ending ...
-Truck is spinning ...
-					G7							r		
-D3,3					G5							R		
-inventory is block ...
-D0,3				P5	G5									
+restocked block ...
+	D2			D2,382	P									
+D3,2					G5					B3,4		r		
+					G5	G3,0					A	R		
+D2,3	D2				G5		a1,2				B1,4			
+inventory block ...
+	F			P5										
 				d0,19										
-				U0,1										
-Truck is blocking ...
-		W		D0,5									T0,5	
-													t1,5	
-					P								T1,5	
-Truck is ending ...
-Truck is spinning ...
-		W			G5					r			t2,5	
-		W			G6		B0,3			R	B0,4		T2,5	
-													t3,5	
-inventory is block ...
-D0,1				P6		B3,3		B3,3	F	B3,4		B3,4	T3,5	
-				d1,19										
-				U1,1										
-Truck is blocking ...
-				D1,6	P									
-Truck is ending ...
-Truck is spinning ...
-D3,1					G6	B3,1				B3,3	r			
-					G5						R			
-D2,3							B0,1	B3,1			B0,3	B3,3		
-inventory is block ...
-		W		P5	P			F					t0,7	
-				d2,18	G8									
-				U2,0										
-Truck is blocking ...
-Truck is ending ...
-Truck is spinning ...
-D3,3				D2,3	G10							r		
-D3,3					G6							R		
-inventory is block ...
-D3,1				P4	G4									
-				d0,17										
-				U0,2										
-Truck is blocking ...
-				D0,3	P									
-Truck is ending ...
-Truck is spinning ...
+				U0,0										
+restocked block ...
+D1,2				D0,4	P									
 					G4					r				
-D1,1					G3					R				
-D3,3					G3									
-inventory is block ...
-				P4	G4									
+					G2					R	A			
+D1,1					G6		a1,2		G1,0	B1,4	B1,3			
+inventory block ...
+D0,2				P6										
 				d1,18										
-				U1,1										
-Truck is blocking ...
-D0,2				D1,3	P									
-Truck is ending ...
-Truck is spinning ...
-					G2						r			
-D2,1					G5						R			
-					G8									
-D0,3		W			G4								T0,7	
-													t1,7	
-inventory is block ...
-				P4						B3,2			L1	
-				d2,20										
-				U2,0										
-Truck is blocking ...
-				D2,4	P	B3,6								
-Truck is ending ...
-Truck is spinning ...
-D2,1		W			G2							r	t1,5	
-D1,1					G5							R		
-					G0									
-inventory is block ...
-D3,3				P5	G5	B3,4				B3,1				
-				d0,16										
-				U0,1										
-Truck is blocking ...
-				D0,2	P									
-Truck is ending ...
-Truck is spinning ...
-D0,1					G9					r				
-					G8					R				
-inventory is block ...
-D1,3				P5	G5	B3,2				B3,3				
-				d1,19										
 				U1,0										
-Truck is blocking ...
+restocked block ...
 				D1,4	P									
-Truck is ending ...
-Truck is spinning ...
-D0,3					G4						r			
-					G5	B3,0				B3,2	R			
-inventory is block ...
-D2,1				P5		F								
+					G5						r			
+inventory block ...
+D3,2				P5							R			
 				d2,20										
 				U2,0										
-Truck is blocking ...
+restocked block ...
 				D2,5	P									
-Truck is ending ...
-Truck is spinning ...
-					G10							r		
-D0,2					G3							R		
-inventory is block ...
-D3,1				P5	G5									
-				d0,17										
+					G6							r		
+inventory block ...
+D3,1				P4	G4							R		
+				d0,19										
+				U0,0										
+restocked block ...
+				D0,3	P									
+D0,2		W			G9					r			T0,5	
+										R			t1,5	
+D2,3		W			G9		F			B3,4			T1,5	
+inventory block ...
+				P9		B3,3							t2,5	
+		W		d1,20	P					B3,3	r	A	T2,5	
+D2,2				U1,0	G10	B3,1		A2,5				B2,4	t3,5	
+restocked block ...
+D0,3				D1,9	G8				B1,3	B1,4	R		T3,5	
+inventory block ...
+				P8	P							B2,3		
+D2,1		T0,7		d2,18	G5			B2,3						
+				U2,1										
+restocked block ...
+		W		D2,7	G4							r	t0,7	
+inventory block ...
+D2,3				P4								R		
+												A		
+					P					B1,3		B2,3		
+				d0,16	G2			A2,3	B1,1					
 				U0,3										
-Truck is blocking ...
-				D0,5	P									
-Truck is ending ...
-Truck is spinning ...
-D2,2					G7					r				
-inventory is block ...
-				P7						R				
+restocked block ...
+D3,2				D0,3	G2			B2,1		r		B2,2		
+D0,2		T3,7			G8					R				
+inventory block ...
+		T2,7		P8										
 				d1,20										
 				U1,0										
-Truck is blocking ...
-				D1,7	P									
-Truck is ending ...
-Truck is spinning ...
-D0,2					G5						r			
-					G7						R			
-D0,1					G4									
-inventory is block ...
-D2,2				P5	G5									
-				d2,20										
-				U2,0										
-Truck is blocking ...
-				D2,5	P									
-				X	G5							r		
-D1,1					G7						A	R	T1,5	
-D0,3					G6		A0,5				B0,4			
-Truck is ending ...
-Truck is spinning ...
-					G6									
-D0,1					G6		B0,3				B0,3			
-inventory is block ...
-D1,2				P3	G3									
+restocked block ...
+				D1,8	P									
+					G8						r			
+inventory block ...
+D1,3				P3	G3						R			
+				d2,17										
+				U2,3										
+restocked block ...
+D2,3				D2,3	P									
+					G8							r		
+inventory block ...
+D1,2				P4	G4							R		
 				d0,17										
-				U0,2										
-Truck is blocking ...
+				U0,1										
+restocked block ...
 				D0,2	P									
-Truck is ending ...
-Truck is spinning ...
-					G6					r	B0,2			
-D0,2					G6		B0,1			R				
-D3,2					G5									
-inventory is block ...
-D1,3				P4	G4									
-					P									
-				d1,17	G8									
-				U1,3										
-Truck is blocking ...
-Truck is ending ...
-Truck is spinning ...
-		W		D1,4	G4						r		t1,7	
-inventory is block ...
-D0,2				P4							R			
+D1,2					G7					r				
+inventory block ...
+D3,1				P8	G8					R				
+				d1,20										
+				U1,0										
+restocked block ...
+				D1,8	P									
+					G9						r			
+D0,1		W			G8						R		L0	
+inventory block ...
+D2,3		C0,5		P7	G7	L							t3,7	
+				d2,17										
+				U2,0										
+restocked block ...
+				D2,4	P									
+					G7							r		
+D2,2					G5							R		
+inventory block ...
+D0,1				P6	G6									
+				d0,19										
+				U0,1										
+restocked block ...
+				D0,6	P									
+D1,1					G8					r				
+					G5					R				
+inventory block ...
+D3,3				P5	G5									
+				d1,20										
+				U1,0	P						r			
+restocked block ...
+D1,3				D1,5	G4						R			
+inventory block ...
+				P4										
 				d2,20										
 				U2,0										
-Truck is blocking ...
-				D2,4	P									
-Truck is ending ...
-Truck is spinning ...
-D2,3					G5							r		
-					G10							R		
-D3,3					G4									
-inventory is block ...
-D2,3				P7	G7									
+restocked block ...
+D2,1				D2,4	P									
+					G5							r		
+inventory block ...
+D1,3				P2	G2							R		
+				d0,19										
+				U0,0										
+restocked block ...
+				D0,1	P									
+D3,1					G7					r				
+		W								R			L3	
+													t2,7	
+		C3,5			G6			B2,6	L			B2,4	T2,7	
+inventory block ...
+D2,2		W		P8	G8			F					t0,5	
+				d1,20										
+				U1,0										
+restocked block ...
+				D1,8	P									
+D0,3					G3						r			
+D0,2		W			G8						R		T0,5	
+inventory block ...
+				P8									t3,5	
+				d2,19										
+				U2,0										
+restocked block ...
+				D2,7	P									
+					G6	B3,3				B3,4		r		
+D2,1					G7							R		
+D2,1					G5									
+inventory block ...
+D1,2				P6	G6	B3,1				B3,3				
 				d0,18										
 				U0,2										
-Truck is blocking ...
-				D0,7	P									
-Truck is ending ...
-Truck is spinning ...
-					G1					r				
-D2,2					G4					R				
-D2,3					G6									
-inventory is block ...
-D0,3				P7	G7									
-				d1,17										
-				U1,1										
-Truck is blocking ...
-				D1,5	P									
-Truck is ending ...
-Truck is spinning ...
-					G1						r			
-D0,2					G9						R			
-inventory is block ...
-D0,1				P6	G6									
-				d2,20										
-				U2,0										
-Truck is blocking ...
-				D2,6	P									
-Truck is ending ...
-Truck is spinning ...
-					G2							r		
-inventory is block ...
-D3,2				P8	G8							R		
-				d0,18										
-				U0,0										
-Truck is blocking ...
-D0,3				D0,6	P									
-Truck is ending ...
-Truck is spinning ...
+restocked block ...
+				D0,6	P									
 					G3					r				
-inventory is block ...
-D1,2				P6	G6					R	B0,3		T1,7	
-					P									
-D1,2				d1,18	G10		B0,6							
-				U1,1										
-Truck is blocking ...
-Truck is ending ...
-Truck is spinning ...
-				D1,5	G6						r			
-inventory is block ...
-D1,1				P6							R			
+D0,1		T0,7			G8					R				
+inventory block ...
+D3,3				P5	G5									
+				d1,20										
+				U1,0										
+restocked block ...
+				D1,5	P									
+					G3						r			
+D0,1					G6						R			
+D3,2		W			G5								T3,5	
+					G6				B1,3	B1,4			t0,7	
+inventory block ...
+D1,2				P6					F					
 				d2,20										
 				U2,0										
-Truck is blocking ...
-				D2,6							A			
-					P						B0,3			
-Truck is ending ...
-Truck is spinning ...
-					G7							r		
-							A0,6					R		
-inventory is block ...
-D1,1				P5	G5		F							
+restocked block ...
+				D2,6	P									
+					G9							r		
+D1,3					G5							R		
+D2,2					G9									
+inventory block ...
+				P8	G8									
+				d0,17										
+				U0,0										
+restocked block ...
+D0,1				D0,5	P									
+					G8					r				
+D3,3					G5					R				
+					G9									
+inventory block ...
+D2,2				P7	G7									
+				d1,20	P						r			
+D1,3				U1,0	G8									
+restocked block ...
+D0,2				D1,7	G3						R			
+inventory block ...
+				P3										
+				d2,20										
+				U2,0										
+restocked block ...
+				D2,3	P									
+D3,3					G7							r		
+					G4							R		
+D3,1					G6									
+inventory block ...
+D1,1				P6	G6									
 				d0,20										
 				U0,0										
-Truck is blocking ...
-				D0,5	P									
-Truck is ending ...
-Truck is spinning ...
-D1,3					G3					r				
-VendingMachine is ending ...0
-										R				
-inventory is block ...
-D0,3				P4	G4					F				
-				d1,18										
-				U1,1										
-Truck is blocking ...
-				D1,3	P						r			
-Truck is ending ...
-Truck is spinning ...
-VendingMachine is ending ...1
-D3,2					G4						R			
-inventory is block ...
-D2,2				P7	G7						F			
+restocked block ...
+				D0,6	P									
+					G6					r				
+D0,3					G11					R			T0,7	
+D0,3					G6	B3,6				B3,4				
+inventory block ...
+D2,2				P8	G8	B3,4				B3,3				
+				d1,20										
+				U1,0										
+restocked block ...
+				D1,8	P									
+					G1						r			
+D2,3					G2						R			
+					G5	B3,2				B3,2				
+inventory block ...
+D2,1				P1	G1	F								
 				d2,20										
 				U2,0										
-Truck is blocking ...
-				D2,7	P									
-Truck is ending ...
-Truck is spinning ...
-					G3							r		
-VendingMachine is ending ...2
+restocked block ...
+D0,2				D2,1	P									
+					G10							r		
+D3,2					G4							R		
+					G5									
+inventory block ...
+D2,3				P8	G8									
+				d0,17										
+				U0,3										
+restocked block ...
+				D0,8	P									
+D3,1					G4					r				
+										R				
+D0,3					G5					F				
+inventory block ...
+				P7	G7									
+				d1,20										
+				U1,0										
+restocked block ...
+D1,2				D1,7	P									
+					G1						r			
+											R			
+D1,3					G6						F			
+inventory block ...
+D0,2				P9	G9									
+				d2,20										
+				U2,0										
+restocked block ...
+				D2,9	P									
+					G5							r		
 												R		
-D0,2					G7							F		
-BottlingPlant is shutting down ...
-D2,3					F									
-D1,1														
-D1,1														
-D1,2														
-D3,2														
-D1,2														
-D3,1														
-D2,3														
-D0,3														
-D0,1														
-D1,3														
-D1,2														
-D2,2														
-D1,3														
-D1,2														
+inventory block ...
+D1,1				P5								F		
+				F	P									
+D0,1					G6									
+D3,3														
 D1,1														
-D3,1														
 D1,1														
 D2,2														
-D0,1														
-D2,3														
-D2,2														
-D3,1														
 D0,2														
 D2,2														
-D0,1														
-D0,2														
-D3,2														
-D0,2														
+D3,1														
+D1,1														
 D2,3														
-D0,2														
-D0,2														
 D1,1														
-D2,1														
-D2,1														
-D0,2														
-D1,2														
-D2,2														
+D3,3														
 D0,3														
-D1,1														
+D1,3														
 D2,2														
-D3,2														
-D3,3														
-D3,3														
-D2,1														
 D2,2														
 D0,2														
-D2,1														
-D0,3														
-D2,3														
-D0,3														
-D1,1														
-D3,2														
 D0,2														
 D2,3														
-D2,2														
-D0,2														
-D3,2														
-D0,1														
-D0,1														
-D3,3														
-D0,2														
-D1,1														
-D3,1														
 D2,3														
-D3,3														
-D2,1														
-D3,3														
 D1,2														
-D0,3														
 D0,1														
-D2,3														
-D3,3														
-D3,2														
-D3,1														
 D2,1														
-D0,3														
-D0,2														
-D3,2														
-D0,2														
-D1,1														
-D0,1														
-D1,1														
-D3,3														
-D3,2														
-D2,3														
-D3,2														
-D1,1														
-D0,1														
-D3,3														
-D1,3														
-D1,3														
 D1,2														
-D3,1														
 D1,2														
 D0,2														
 D2,1														
-D1,2														
-D0,1														
-D0,3														
-D1,1														
-D3,1														
-D2,2														
-D0,1														
-D3,1														
-D3,2														
-D2,3														
-D1,1														
-D1,1														
-D3,1														
-D0,2														
-D3,2														
-D0,2														
 D3,2														
-D1,3														
-D2,2														
-D2,3														
-D1,1														
-D2,1														
-D1,1														
+D0,3														
 D3,2														
-D0,1														
-D2,3														
-D3,3														
-D1,1														
 D2,1														
-D3,1														
-D1,2														
 D0,2														
-D0,1														
-D1,1														
-D1,3														
-D3,3														
-D2,3														
-D3,1														
-D2,3														
-D1,1														
-D1,3														
-D0,3														
-D2,2														
-D1,1														
-D3,3														
-D3,3														
-D2,3														
-D2,1														
-D2,2														
-D0,1														
-D1,3														
 D3,3														
-D1,1														
-D1,3														
-D2,3														
-D1,3														
-D1,1														
 D1,3														
-D1,1														
-D0,2														
-D2,2														
 D0,3														
-D2,2														
-D2,2														
-D0,2														
-D1,1														
-D3,1														
 D0,3														
-D3,3														
-D3,2														
-D1,3														
 D2,1														
 D2,2														
-D1,1														
-D3,1														
-D3,3														
-D0,3														
-D2,2														
-D2,2														
-D3,3														
-D2,1														
-D1,1														
-D2,1														
-D0,2														
-D2,3														
-D2,3														
 D3,1														
-D1,2														
 D0,1														
-D3,3														
 D1,2														
-D2,3														
-D3,2														
-D0,3														
 D1,3														
 D2,3														
-D0,1														
 D0,3														
-D2,3														
-D3,1														
-D0,1														
-D2,2														
-D1,2														
 D2,2														
-D1,1														
-D0,2														
-D0,2														
-D0,3														
-D1,3														
 D3,1														
 D3,2														
-D3,1														
-D3,1														
+D0,3														
 D1,2														
-D3,1														
-D3,3														
-D3,2														
 D2,3														
-D1,2														
-D1,2														
-D3,2														
-D0,2														
-D1,2														
-D3,2														
-D1,1														
-D3,1														
-D0,1														
 D1,3														
-D2,2														
-D2,1														
-D1,3														
 D2,3														
-D1,2														
 D3,2														
-D1,3														
-D1,2														
-D0,3														
-D3,2														
-D3,1														
-D0,2														
+D2,1														
+D3,3														
 D3,2														
-D3,1														
-D1,1														
-D1,1														
-D0,1														
-D0,1														
-D0,2														
 D0,3														
 D2,1														
+D2,1														
 D1,2														
-D0,3														
-D3,2														
-D2,2														
+D1,2														
 D0,1														
+D3,3														
 D2,2														
 D2,3														
-D3,2														
-D0,3														
-D0,3														
-D3,3														
-D0,1														
+D1,3														
 D2,1														
-D1,1														
-D3,2														
 D0,2														
-D3,3														
-D2,1														
-D2,1														
-D1,1														
-D0,3														
-D2,1														
-D3,1														
-D2,2														
-D2,2														
-D3,3														
-D2,3														
-D3,2														
-D2,2														
-D3,2														
 D1,1														
-D1,3														
 D2,2														
-D0,1														
 D0,2														
-D3,2														
-D2,3														
 D0,3														
-D0,1														
-D2,3														
-D1,3														
-D1,3														
-D3,3														
-D2,3														
 D1,1														
-D2,1														
-D2,2														
-D3,2														
-D2,2														
-D0,2														
 D3,2														
-D2,2														
-D3,1														
 D2,3														
-D1,1														
-D1,3														
+D3,2														
 D0,1														
-D2,1														
-D2,3														
-D2,2														
 D2,1														
-D2,3														
-D0,1														
-D0,1														
-D3,1														
-D0,1														
-D3,1														
-D0,1														
-D3,2														
-D2,2														
-D1,1														
-D2,1														
-D0,2														
-D3,1														
-D3,1														
-D2,3														
-D3,1														
-D0,1														
-D1,2														
-D3,3														
-D0,3														
-D3,1														
-D1,1														
-D3,2														
-D2,2														
-D3,2														
-D1,1														
-D1,2														
-D0,3														
-D2,3														
-D1,2														
-D2,2														
-D2,1														
-D2,2														
-D2,3														
-D1,2														
-D2,3														
-D1,2														
-D1,3														
-D2,1														
-D3,3														
-D1,1														
-D1,3														
-D3,1														
-D1,1														
-D1,2														
-D1,2														
-D2,1														
-D3,1														
-D2,3														
-D2,3														
-D0,3														
-D0,2														
-D3,1														
-D3,1														
-D2,2														
-D3,3														
-D1,1														
-D0,3														
-D2,2														
-D3,1														
-D3,2														
-D2,3														
-D2,3														
-D3,1														
-D3,2														
-D3,3														
-D2,1														
-D3,3														
-D3,1														
-D2,3														
-D1,2														
-D2,2														
-D1,3														
-D3,3														
-D0,3														
-D2,1														
-D0,1														
-D1,1														
-D3,2														
-D2,2														
-D1,2														
-D2,1														
-D2,1														
-D3,3														
-D3,3														
-D3,3														
-D1,3														
-D3,2														
-D3,3														
-D2,1														
-D0,2														
-D1,1														
-D0,3														
-D2,1														
-D0,2														
-D0,3														
-D0,2														
-D2,2														
-D0,1														
-D0,2														
-D2,3														
-D2,1														
-D1,1														
-D3,2														
-D2,1														
-D0,3														
-D2,1														
-D1,2														
-D0,1														
-D1,3														
-D1,1														
-D0,3														
-D1,2														
-D1,2														
-D0,2														
-D1,2														
-D0,2														
-D3,2														
-D1,1														
-D2,3														
-D2,2														
-D2,2														
-D2,2														
-D1,3														
-D2,1														
-D1,3														
-D2,3														
-D3,1														
-D3,2														
-D0,1														
-D2,3														
-D3,3														
-D1,3														
-D1,2														
-D1,1														
-D3,1														
-D0,3														
-D0,1														
-D1,3														
-D3,3														
-D0,1														
-D3,1														
-D3,2														
-D1,1														
-D2,3														
-D3,1														
-D3,1														
-D2,2														
-D1,2														
-D1,1														
-D1,2														
-D3,3														
-D2,2														
-D1,1														
-D2,1														
-D1,2														
-D1,2														
-D3,3														
-D1,3														
-D2,3														
-D2,3														
-D1,1														
-D2,1														
-D1,1														
-D1,2														
-D2,1														
-D2,2														
-D2,3														
-D2,1														
-D3,2														
-D1,2														
-D3,1														
-D2,1														
-D0,3														
-D2,1														
-D1,1														
-D3,3														
-D3,2														
-D3,3														
-D1,1														
-D0,2														
-D1,3														
-D3,3														
-D3,2														
-D3,2														
-D3,2														
-D2,3														
-D3,1														
-D1,2														
-D3,2														
-D0,3														
-D3,2														
-D1,2														
-D1,1														
-D2,2														
-D2,3														
-D2,3														
-D2,2														
-D0,1														
-D3,3														
-D1,1														
-D0,1														
-D1,3														
-D3,3														
-D0,2														
-D0,3														
-D2,3														
-D3,3														
-D1,3														
-D2,1														
-D3,3														
-D3,2														
-D3,3														
-D1,2														
-D1,2														
-D2,3														
-D0,3														
-D0,2														
-D2,3														
-D0,3														
-D1,3														
-D2,3														
-D0,2														
-D2,3														
-D2,2														
-D3,1														
-D3,3														
-D1,1														
-D0,3														
-D1,3														
-D2,2														
-D0,3														
-D0,2														
-D0,3														
-D2,2														
-D1,2														
-D2,2														
-D2,1														
-D3,2														
-D0,2														
-D0,1														
-D0,2														
-D1,3														
-D0,1														
-D3,2														
-D3,2														
-D0,3														
-D0,1														
-D2,1														
-D0,2														
-D0,2														
-D3,3														
-D3,2														
-D0,3														
-D2,1														
-D1,3														
-D3,3														
-D0,2														
-D1,3														
-D3,3														
-D2,3														
-D2,1														
-D1,2														
-D3,1														
-D1,3														
-D3,1														
-D0,3														
-D2,1														
-D2,2														
-D3,3														
-D0,1														
-D0,1														
-D0,2														
-D1,1														
-D3,2														
-D0,2														
-D0,3														
-D0,3														
-D3,1														
-D0,3														
-D1,1														
-D2,3														
-D2,2														
-D1,3														
-D1,2														
-D0,3														
-D3,3														
-D2,3														
-D1,3														
-D0,2														
-D3,3														
-D0,2														
-D1,3														
-D3,1														
-D1,2														
-D1,3														
-D2,2														
-D1,2														
-D3,1														
-D2,2														
-D2,1														
-D3,2														
-D3,1														
-D2,3														
-D0,3														
-D0,3														
-D2,2														
-D2,1														
-D1,2														
-D3,2														
-D0,1														
-D0,1														
-D0,3														
-D3,1														
-D1,1														
-D2,2														
-D3,2														
-D0,3														
-D2,2														
-D2,2														
-D0,3														
-D3,1														
-D2,3														
-D0,1														
-D1,1														
-D2,2														
-D2,2														
-D1,1														
-D0,1														
-D1,1														
-D2,2														
-D0,3														
-D3,3														
-D2,2														
-D2,3														
-D0,1														
-D1,2														
-D2,1														
-D1,2														
-D3,1														
-D0,3														
-D2,1														
-D1,1														
-D2,3														
-D1,1														
-D3,2														
-D1,2														
-D2,3														
-D3,3														
-D2,3														
-D1,3														
-D0,1														
-D0,3														
-D0,2														
-D2,3														
-D3,3														
-D1,1														
-D3,3														
-D0,3														
-D1,2														
-D3,3														
-D0,1														
-D2,1														
-D1,3														
-D1,3														
-D3,2														
-D1,2														
-D0,2														
-D3,1														
-D3,1														
-D1,1														
-D3,3														
-D3,1														
-D3,3														
-D3,2														
-D2,2														
-D2,2														
-D1,3														
-D1,3														
-D1,1														
-D3,2														
-D3,1														
-D1,1														
-D2,2														
-D0,1														
-D1,2														
-D3,3														
-D0,1														
-D3,3														
-D0,1														
-D2,2														
-D3,2														
-D2,3														
-D2,3														
-D3,3														
-D1,2														
-D0,2														
-D0,3														
-D2,1														
-D2,3														
-D2,2														
-D2,3														
-D3,3														
-D2,2														
-D2,2														
-D3,1														
-D1,2														
-D2,1														
-D0,3														
-D2,1														
-D3,1														
-D2,2														
-D0,3														
-D2,2														
-D2,1														
-D2,2														
-D1,1														
-D0,3														
-D0,2														
-D0,1														
-D1,1														
-D3,3														
-D1,1														
-D3,1														
-D2,1														
-D3,2														
-D1,3														
-D0,1														
-D3,2														
-D3,2														
-D3,2														
-D0,3														
-D1,2														
-D1,2														
-D0,3														
-D3,3														
-D3,2														
-D1,2														
-D1,3														
-D0,1														
-D2,3														
-D2,2														
-D1,3														
-D2,3														
-D1,3														
-D1,3														
-D0,1														
-D1,1														
-D3,2														
-D1,3														
-D3,2														
-D3,1														
-D0,1														
-D1,2														
-D1,1														
-D3,3														
-D3,1														
-D2,3														
-D3,2														
-D1,1														
-D3,2														
-D0,3														
-D1,1														
-D0,2														
-D1,3														
-D2,2														
-D3,3														
-D3,2														
-D0,3														
-D3,1														
-D1,3														
-D1,1														
-D1,3														
-D1,1														
-D3,2														
-D1,2														
-D0,3														
-D2,2														
-D2,2														
-D2,2														
-D1,2														
-D2,3														
-D1,3														
-D0,1														
-D3,1														
-D2,3														
-D1,3														
-D1,3														
-D1,2														
-D0,3														
-D2,2														
-D1,1														
-D0,2														
-D1,3														
-D0,1														
-D3,1														
-D2,1														
-D1,3														
-D2,2														
-D2,3														
-D2,2														
-D3,1														
-D2,1														
-D1,2														
-D2,3														
-D3,2														
-D3,3														
-D2,2														
-D3,1														
-D2,1														
-D1,1														
-D3,3														
-D0,2														
-D1,1														
-D1,2														
-D0,1														
-D0,1														
-D2,3														
-D3,1														
-D2,3														
-D3,1														
-D1,1														
-D2,1														
-D0,3														
-D1,3														
-D0,3														
-D3,1														
-D1,3														
-D0,1														
-D0,2														
-D2,1														
-D3,2														
-D1,1														
-D2,1														
-D0,2														
-D3,2														
-D2,2														
-D3,2														
-D3,1														
-D3,2														
-D3,1														
-D0,3														
-D1,3														
-D2,1														
-D0,2														
-D3,2														
-D2,3														
-D3,1														
-D1,2														
-D0,2														
-D1,2														
-D2,2														
-D3,2														
-D1,2														
-D3,2														
-D2,3														
-D0,2														
-D2,3														
-D3,2														
-D1,3														
-D2,2														
-D1,2														
-D3,2														
-D0,2														
-D0,2														
-D0,1														
-D2,1														
-D0,1														
-D0,1														
-D2,1														
-D0,2														
-D2,3														
