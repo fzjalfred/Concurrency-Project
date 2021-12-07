@@ -49,8 +49,8 @@ int main(int argc, char const *argv[])
 
     uProcessor p[processors - 1]; // number of kernel threads
     rng.set_seed(seed); // set rng's seed
-    //if ( processors == 1 ) uThisProcessor().setPreemption( 0 ); // turn off time-slicing for reproducibility
-
+    if ( processors == 1 ) uThisProcessor().setPreemption( 0 ); // turn off time-slicing for reproducibility
+    cerr << seed << endl;
     /* initialize all tasks */
     {
         Printer prt(cparms.numStudents, cparms.numVendingMachines, cparms.numCouriers);
@@ -61,9 +61,7 @@ int main(int argc, char const *argv[])
         VendingMachine * machines[cparms.numVendingMachines];
         Student * students[cparms.numStudents];
         Parent parent(prt, bank, cparms.numStudents, cparms.parentalDelay);
-        BottlingPlant plant(prt, nameServer, 
-            cparms.numVendingMachines, cparms.maxShippedPerFlavour, 
-            cparms.maxStockPerFlavour, cparms.timeBetweenShipments);
+        
         
         
         /* initialize all vending machines */
@@ -71,21 +69,26 @@ int main(int argc, char const *argv[])
             machines[i] = new VendingMachine(prt, nameServer, i, cparms.sodaCost);
         }
 
-        /* init all students */
-        for (unsigned int i = 0; i < cparms.numStudents; ++i){
-            students[i] = new Student(prt, nameServer, office, groupOff, i, cparms.maxPurchases);
-        }
-
-        /* wait all tasks to finish */
-        for (unsigned int i = 0; i < cparms.numStudents; ++i){
-            delete students[i];
-        }
+        {
+            BottlingPlant plant(prt, nameServer, 
+            cparms.numVendingMachines, cparms.maxShippedPerFlavour, 
+            cparms.maxStockPerFlavour, cparms.timeBetweenShipments);
+            /* init all students */
+            for (unsigned int i = 0; i < cparms.numStudents; ++i){
+                students[i] = new Student(prt, nameServer, office, groupOff, i, cparms.maxPurchases);
+            }
+        
+            /* wait all tasks to finish */
+            for (unsigned int i = 0; i < cparms.numStudents; ++i){
+                delete students[i];
+            }
+        }   // students, plant, truck exit
 
         /* wait all tasks to finish */
         for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){
             delete machines[i];
         }
-    }
+    } 
     
 
     return 0;

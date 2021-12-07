@@ -1,10 +1,7 @@
 #include "bank.h"
 
 Bank::Bank( unsigned int numStudents ) {
-    accounts = new uint [numStudents] {0};
-    for (uint i = 0; i<numStudents; i++) {
-        accounts[i] = 0;
-    }
+    accounts = new uint [numStudents] {0};  // init accounts
 }
 Bank::~Bank(){
     delete [] accounts;

@@ -1,7 +1,8 @@
 #include "nameServer.h"
 #include "printer.h"
 #include "vendingMachine.h"
-
+#include <iostream>
+using namespace std;
 NameServer::NameServer( Printer & prt, unsigned int numVendingMachines, unsigned int numStudents ): 
 prt{prt}, numVendingMachines{numVendingMachines}, numStudents{numStudents}, registeredMach{0}{
 

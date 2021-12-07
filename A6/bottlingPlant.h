@@ -12,7 +12,7 @@ _Task BottlingPlant {
     unsigned int timeBetweenShipments;
 
     Truck truck;
-    bool is_shutdown = false;
+    bool is_shutdown = false;   // flag to determine when to raise exp on truck
     uint production[4] = {0};
 
     void main();

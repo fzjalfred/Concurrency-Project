@@ -2,11 +2,10 @@
 #include "vendingMachine.h"
 #include "printer.h"
 #include "nameServer.h"
-#include <iostream>
 
 VendingMachine::VendingMachine( Printer & prt, NameServer & nameServer, unsigned int id, unsigned int sodaCost ):
 prt{prt}, nameServer{nameServer}, id{id}, sodaCost{sodaCost}{
-    for (unsigned int i = 0; i < 4; ++i) stock[i] = 0;    //Remove it when done truck/plant
+    
 }
 
 void VendingMachine::buy( VendingMachine::Flavours flavour, WATCard & card ){
@@ -18,7 +17,7 @@ void VendingMachine::buy( VendingMachine::Flavours flavour, WATCard & card ){
         flag = VendingMachine::Status::stocks;
         _Throw VendingMachine::Stock{};
     }
-    currCard = &card;
+    currCard = &card;   // store info and perform computation in main
     currFlavour = flavour;
     if (rng() % 4 == 0){    // free soda
         flag = VendingMachine::Status::free;
@@ -45,23 +44,25 @@ _Nomutex unsigned int VendingMachine::getId() const{
 }
 
 void VendingMachine::main(){
-    
-    nameServer.VMregister(this);
     PRINT(Printer::Kind::Vending, id,'S', sodaCost);
-    for (;;){
+    nameServer.VMregister(this);
+    FOR: for (;;){
         try{
-            _Accept(~VendingMachine){break;}
+            _Accept(~VendingMachine){
+                break;
+            }
             or _Accept(buy){ // normal buy
                 currCard->withdraw(sodaCost);
                 stock[currFlavour]--;
                 PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
-                while (!waiting.empty()) waiting.signalBlock();
+                waiting.signalBlock();
             }   // buy
             or  _Accept(inventory) {
+                
                 PRINT(Printer::Kind::Vending, id, 'r');
                     _Accept(restocked) {
                         PRINT(Printer::Kind::Vending, id, 'R');
-                }
+                } 
             } // block for restock. //OUPUT fix TODO
         }   catch(uMutexFailure::RendezvousFailure &){
             switch (flag)
@@ -78,21 +79,17 @@ void VendingMachine::main(){
                     PRINT(Printer::Kind::Vending, id, 'r');
                     _Accept(restocked) {
                         PRINT(Printer::Kind::Vending, id, 'R');
-                    }
+                    }  
                 } // block for restock.
+                or _Accept(~VendingMachine){
+                        break FOR;
+                }   // handle the case when truck is destroyed
                 break;
             default:
                 break;
             }   // switch
-        } _Finally {
-        }   // try     
+        } // try     
     }   // for
     
-    _Accept(inventory) { // release truck.
-        PRINT(Printer::Kind::Vending, id, 'r');
-        _Accept(restocked) {
-                PRINT(Printer::Kind::Vending, id, 'R');
-        }
-    }
     PRINT(Printer::Kind::Vending, id, 'F');
 }

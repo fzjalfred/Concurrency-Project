@@ -11,9 +11,9 @@ _Task Groupoff {
     unsigned int numStudents;
     unsigned int sodaCost; 
     unsigned int groupoffDelay;
-    unsigned int curCompletedStudents;
-    unsigned int curWaitingStudents;
-    unsigned int curCalledStudents;
+    unsigned int curCompletedStudents;  // number of students fully complete
+    unsigned int curWaitingStudents;  // number of students waiting for realcard
+    unsigned int curCalledStudents; // number of students called giftCard()
 	void main();
   public:
 	Groupoff( Printer & prt, unsigned int numStudents, unsigned int sodaCost, unsigned int groupoffDelay );

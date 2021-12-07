@@ -5,7 +5,8 @@
 #include "printer.h"
 #include "groupOff.h"
 #include "vendingMachine.h"
-
+#include <iostream>
+using namespace std;
 
 Student::Student( Printer & prt, NameServer & nameServer, WATCardOffice & cardOffice, Groupoff & groupoff,unsigned int id, unsigned int maxPurchases )
 :prt{prt}, nameServer{nameServer}, cardOffice{cardOffice}, groupoff{groupoff}, id{id}, maxPurchases{maxPurchases}, numPurchased{0}{}
@@ -15,10 +16,9 @@ void Student::main(){
     unsigned int sodaToBuy = rng(1, maxPurchases);  // number of soda to buy
     VendingMachine::Flavours flavour = static_cast<VendingMachine::Flavours>(rng(3));   // flavour of soda to buy
     PRINT(Printer::Kind::Student,id,'S',flavour, sodaToBuy);
-    WATCard::FWATCard giftCard = groupoff.giftCard();
     WATCard::FWATCard watCard = cardOffice.create(id, 5);
+    WATCard::FWATCard giftCard = groupoff.giftCard();
 
-    PRINT(Printer::Kind::WATCardOffice,'C', id, 5);
 
     WATCard* card = nullptr;                            // which card to use
     // obtain the location of vending machine
@@ -28,8 +28,19 @@ void Student::main(){
     for (;;){
         if (numPurchased == sodaToBuy) break;
         yield(rng(1,10)); // yield 1-10 times
-        _Select(watCard || giftCard);
-    
+
+        for(;;){    // handle lost case
+            try{
+                _Select(watCard || giftCard);
+                if (watCard.available()) watCard();
+                break;
+            }   catch(WATCardOffice::Lost &){
+                watCard.reset();
+                PRINT(Printer::Kind::Student,id,'L');
+                watCard = cardOffice.create(id, 5);
+            }   // try
+        }   // for
+        
         if (giftCard.available()){  // if giftcard is aviliable, first use giftcard
             try{
                 card = giftCard();  // retrieve real card
@@ -43,7 +54,8 @@ void Student::main(){
                 PRINT(Printer::Kind::Student,id,'a', flavour, card->getBalance());
                 numPurchased++;
             }   catch(VendingMachine::Stock&){
-                
+                machine = nameServer.getMachine(id);
+                PRINT(Printer::Kind::Student,id,'V', machine->getId());   
             }
         }   else{   // watcard is aviliable
             
@@ -56,16 +68,11 @@ void Student::main(){
                 yield(4);   // watch adv
                 PRINT(Printer::Kind::Student,id,'A', flavour, card->getBalance());
                 numPurchased++;
-            }   catch(WATCardOffice::Lost &e){
-                PRINT(Printer::Kind::Student,id,'L');
-                watCard = cardOffice.create(id, 5);
-                PRINT(Printer::Kind::WATCardOffice,'C', id, 5);
-                
             }   catch(VendingMachine::Funds&){
                 watCard = cardOffice.transfer(id, machine->cost() + 5, card);
-                PRINT(Printer::Kind::WATCardOffice,'T', id, machine->cost() + 5);
             }   catch(VendingMachine::Stock&){
-                
+                machine = nameServer.getMachine(id);
+                PRINT(Printer::Kind::Student,id,'V', machine->getId());
             }
         }   // if
     } // for

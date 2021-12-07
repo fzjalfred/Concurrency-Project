@@ -1,6 +1,5 @@
 #include "bottlingPlant.h"
 #include "MPRNG.h"
-#include <iostream>
 
 extern MPRNG rng;
 
@@ -29,26 +28,26 @@ void BottlingPlant::main() {
     PRINT(Printer::Kind::BottlingPlant,'S');
     try {
     for(;;) {   
+        // wait for production
+        yield(timeBetweenShipments);
         //perform a production run
-        uint b = 0;
+        uint b = 0; // total num of production
         for (int c = 0; c<4; c++) {
             int bottles = rng(0, maxShippedPerFlavour);
             production[c] = bottles;
             b += bottles;
         }
         PRINT(Printer::Kind::BottlingPlant,'G', b);
-        yield(timeBetweenShipments);
+        
         _Accept(~BottlingPlant) {
             is_shutdown = true;
             _Accept(getShipment);
         }
-        or _Accept(getShipment) {
+        or _Accept(getShipment) {   // wait for truck to pickup
             PRINT(Printer::Kind::BottlingPlant,'P');
-        }_Else;
+        }
         
     }
-    } catch (uMutexFailure::RendezvousFailure &) {
-        //std::cout<<"BottlingPlant is ending ..."<<std::endl;
-    }
+    } catch (uMutexFailure::RendezvousFailure &) {}
     PRINT(Printer::Kind::BottlingPlant,'F');
 }

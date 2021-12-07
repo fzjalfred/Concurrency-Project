@@ -10,7 +10,7 @@ _Task NameServer {
 	unsigned int registeredMach;	// current registered mach num
 	VendingMachine ** machList;		// mach list
 	unsigned int * stuToMach;				// student id - mach id mapping
-	unsigned int currMachId;
+	unsigned int currMachId;	// recorded info for computation in main
 	unsigned int currStuId;
 	void main();
   public:

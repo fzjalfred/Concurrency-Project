@@ -20,14 +20,9 @@ _Task WATCardOffice {
 	
 	_Task Courier;					// communicates with bank TODO
 	Courier** couriersPool;             // courier pool
-	uCondition waiting;
-    //WATCard::FWATCard card;
-    std::queue<Job*> requests;
+    std::queue<Job*> requests;		// job queue
     Printer& prt;
     unsigned int numCouriers;
-    unsigned int curAmount;
-    unsigned int curSid;
-	WATCard *realCard;
 	Bank& bank;
 	void main();
   public:
