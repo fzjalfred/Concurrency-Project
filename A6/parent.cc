@@ -12,7 +12,7 @@ unsigned int numStudents, unsigned int parentalDelay)
 Parent::~Parent() {}
 
 void Parent::main() {
-    PRINT(Printer::Kind::Parent, 'S');
+    prt.print(Printer::Kind::Parent, 'S');
     for (;;) {
         _Accept( ~Parent ) {
             break;
@@ -21,9 +21,9 @@ void Parent::main() {
         yield(parentalDelay);   // wait 
         uint parent_give = rng(1,3);
         uint sid = rng(0, numStudents - 1);
-        PRINT(Printer::Kind::Parent, 'D', sid, parent_give);
+        prt.print(Printer::Kind::Parent, 'D', sid, parent_give);
         bank.deposit(sid, parent_give);
         
     }
-    PRINT(Printer::Kind::Parent, 'F');
+    prt.print(Printer::Kind::Parent, 'F');
 }

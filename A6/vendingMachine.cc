@@ -44,7 +44,7 @@ _Nomutex unsigned int VendingMachine::getId() const{
 }
 
 void VendingMachine::main(){
-    PRINT(Printer::Kind::Vending, id,'S', sodaCost);
+    prt.print(Printer::Kind::Vending, id,'S', sodaCost);
     nameServer.VMregister(this);
     FOR: for (;;){
         try{
@@ -54,31 +54,31 @@ void VendingMachine::main(){
             or _Accept(buy){ // normal buy
                 currCard->withdraw(sodaCost);
                 stock[currFlavour]--;
-                PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
+                prt.print(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 waiting.signalBlock();
             }   // buy
             or  _Accept(inventory) {
                 
-                PRINT(Printer::Kind::Vending, id, 'r');
+                prt.print(Printer::Kind::Vending, id, 'r');
                     _Accept(restocked) {
-                        PRINT(Printer::Kind::Vending, id, 'R');
+                        prt.print(Printer::Kind::Vending, id, 'R');
                 } 
             } // block for restock. //OUPUT fix TODO
         }   catch(uMutexFailure::RendezvousFailure &){
             switch (flag)
             {
             case VendingMachine::Status::free:
-                PRINT(Printer::Kind::Vending, id, 'A');
+                prt.print(Printer::Kind::Vending, id, 'A');
                 stock[currFlavour]--;
-                PRINT(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
+                prt.print(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 break;
             case VendingMachine::Status::funds:
                 break;
             case VendingMachine::Status::stocks:
                 _Accept(inventory) {
-                    PRINT(Printer::Kind::Vending, id, 'r');
+                    prt.print(Printer::Kind::Vending, id, 'r');
                     _Accept(restocked) {
-                        PRINT(Printer::Kind::Vending, id, 'R');
+                        prt.print(Printer::Kind::Vending, id, 'R');
                     }  
                 } // block for restock.
                 or _Accept(~VendingMachine){
@@ -91,5 +91,5 @@ void VendingMachine::main(){
         } // try     
     }   // for
     
-    PRINT(Printer::Kind::Vending, id, 'F');
+    prt.print(Printer::Kind::Vending, id, 'F');
 }

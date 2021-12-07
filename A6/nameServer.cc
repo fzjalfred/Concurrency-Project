@@ -34,16 +34,16 @@ VendingMachine * NameServer::getMachine( unsigned int id ){
 }   // getMachine
 
 void NameServer::main(){
-    PRINT(Printer::Kind::NameServer, 'S');
+    prt.print(Printer::Kind::NameServer, 'S');
     for (;;){
         _Accept(~NameServer) {  // stop tsak
-            PRINT(Printer::Kind::NameServer, 'F');
+            prt.print(Printer::Kind::NameServer, 'F');
             break;
         } or _When (registeredMach < numVendingMachines) _Accept(VMregister){   // else register machine
-            PRINT(Printer::Kind::NameServer, 'R', currMachId);
+            prt.print(Printer::Kind::NameServer, 'R', currMachId);
             registeredMach++;
         }or _When (registeredMach == numVendingMachines) _Accept(getMachine){   // when all machines are registered, accept getMachine
-            PRINT(Printer::Kind::NameServer, 'N', currStuId, currMachId);
+            prt.print(Printer::Kind::NameServer, 'N', currStuId, currMachId);
             stuToMach[currStuId] = (currMachId + 1) % numVendingMachines;
         }  or _When (registeredMach == numVendingMachines) _Accept(getMachineList){}
     }

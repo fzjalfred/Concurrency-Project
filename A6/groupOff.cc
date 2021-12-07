@@ -22,7 +22,7 @@ WATCard::FWATCard Groupoff::giftCard(){
 }
 
 void Groupoff::main(){
-    PRINT(Printer::Groupoff, 'S');
+    prt.print(Printer::Groupoff, 'S');
     for (uint i = 0; i < numStudents; ++i){ // first wait for students to call
         _Accept(giftCard);
         curCalledStudents++;
@@ -36,12 +36,12 @@ void Groupoff::main(){
             unsigned int rdmID = rng(curWaitingStudents-1); // generate a random number
             realCard->deposit(sodaCost);    
             cards[rdmID].delivery(realCard);   
-            PRINT(Printer::Groupoff, 'D', sodaCost);
+            prt.print(Printer::Groupoff, 'D', sodaCost);
             std::swap(cards[rdmID], cards[curWaitingStudents-1]);   // move delivered card to the last
             curCompletedStudents++;
             curWaitingStudents--;
         }   //Else
     } // for
-    PRINT(Printer::Groupoff, 'F');
+    prt.print(Printer::Groupoff, 'F');
 }  // main
 

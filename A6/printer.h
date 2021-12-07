@@ -1,10 +1,5 @@
 #pragma once
 
-#ifdef NOOUTPUT
-#define PRINT( stmt... )
-#else
-#define PRINT( stmt... ) prt.print(stmt)
-#endif // NOOUTPUT
 
 _Monitor Printer {
   public:

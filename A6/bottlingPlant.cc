@@ -25,7 +25,7 @@ void BottlingPlant::getShipment(unsigned int cargo[ ]) {
 }
 
 void BottlingPlant::main() {
-    PRINT(Printer::Kind::BottlingPlant,'S');
+    prt.print(Printer::Kind::BottlingPlant,'S');
     try {
     for(;;) {   
         // wait for production
@@ -37,17 +37,17 @@ void BottlingPlant::main() {
             production[c] = bottles;
             b += bottles;
         }
-        PRINT(Printer::Kind::BottlingPlant,'G', b);
+        prt.print(Printer::Kind::BottlingPlant,'G', b);
         
         _Accept(~BottlingPlant) {
             is_shutdown = true;
             _Accept(getShipment);
         }
         or _Accept(getShipment) {   // wait for truck to pickup
-            PRINT(Printer::Kind::BottlingPlant,'P');
+            prt.print(Printer::Kind::BottlingPlant,'P');
         }
         
     }
     } catch (uMutexFailure::RendezvousFailure &) {}
-    PRINT(Printer::Kind::BottlingPlant,'F');
+    prt.print(Printer::Kind::BottlingPlant,'F');
 }

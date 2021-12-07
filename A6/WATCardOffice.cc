@@ -20,28 +20,28 @@ _Task WATCardOffice::Courier {
     private:
     void main() {
         
-        PRINT(Printer::Kind::Courier, id, 'S');
+        prt.print(Printer::Kind::Courier, id, 'S');
         for (;;) {
             auto job = cardOffice->requestWork();   // job to proceed
             if ( job == nullptr ) break;    // this means office ends
-            PRINT(Printer::Kind::Courier, id, 't', job->sid, job->amount);
+            prt.print(Printer::Kind::Courier, id, 't', job->sid, job->amount);
             bank.withdraw(job->sid, job->amount);
             job->card->deposit(job->amount);
             if ( rng(5) == 0 ) {  // card lost
                 job->result.exception( new WATCardOffice::Lost );
                 delete job->card;
                 // print lost
-                PRINT( Printer::Kind::Courier, id, 'L', job->sid ); 
+                prt.print( Printer::Kind::Courier, id, 'L', job->sid ); 
             } else {
                 job->result.delivery( job->card );
                 // print delievery
-                PRINT( Printer::Kind::Courier, id, 'T', 
+                prt.print( Printer::Kind::Courier, id, 'T', 
                                 job->sid, job->amount );
             }
             delete job;
         }
 
-        PRINT(Printer::Kind::Courier, id, 'F');
+        prt.print(Printer::Kind::Courier, id, 'F');
         
     }
 };
@@ -79,7 +79,7 @@ WATCardOffice::~WATCardOffice(){
 }
 
 void WATCardOffice::main(){
-    PRINT(Printer::Kind::WATCardOffice, 'S');
+    prt.print(Printer::Kind::WATCardOffice, 'S');
     
     for ( ; ; ) {
         _Accept ( ~WATCardOffice ) {
@@ -87,14 +87,14 @@ void WATCardOffice::main(){
         } or _Accept ( create) {
             uint sid = requests.back()->sid;
             uint amount = requests.back()->amount;
-            PRINT(Printer::Kind::WATCardOffice,'C', sid, amount);
+            prt.print(Printer::Kind::WATCardOffice,'C', sid, amount);
         } or _Accept ( transfer) {
             uint sid = requests.back()->sid;
             uint amount = requests.back()->amount;
-            PRINT(Printer::Kind::WATCardOffice,'T', sid, amount);
+            prt.print(Printer::Kind::WATCardOffice,'T', sid, amount);
         } or _When( requests.size() ) _Accept ( requestWork ) { // block for a student's request
             requests.pop(); // the job is to be finished in the future.
-            PRINT(Printer::Kind::WATCardOffice, 'W');
+            prt.print(Printer::Kind::WATCardOffice, 'W');
         } 
     } // for 
     
@@ -102,6 +102,6 @@ void WATCardOffice::main(){
     for (unsigned int i = 0; i < numCouriers; i++) {
         _Accept ( requestWork );
     }
-    PRINT(Printer::Kind::WATCardOffice, 'F');
+    prt.print(Printer::Kind::WATCardOffice, 'F');
 }
 
