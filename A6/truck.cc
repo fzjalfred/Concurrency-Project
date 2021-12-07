@@ -29,6 +29,7 @@ void Truck::computeRemain(uint* stock, uint* sodaList, uint& totalLack, uint& to
 void Truck::main() {
     prt.print(Printer::Kind::Truck,'S');
     VendingMachine **mch_list =  nameServer.getMachineList();
+    uint i = 0; // last machine idx
     for (;;){
         yield(rng(1,10));   // wait before each getShipment
         try{
@@ -38,15 +39,15 @@ void Truck::main() {
                 total_amount += sodaList[c];
             }   // for
             prt.print(Printer::Kind::Truck,'P', total_amount);
-            uint i = 0; // last machine idx
             uint times = numVendingMachines;
             for (;times > 0;i++) {
+                if (total_amount == 0) break; // if no stock left, begin another ship
                 if (i == numVendingMachines) i = 0; // begin another cycle
                 VendingMachine* machine = mch_list[i];
                 unsigned int *stock = machine->inventory();
                 prt.print(Printer::Kind::Truck,'d', i, total_amount);
 
-                uint total_lack = 0;
+                uint total_lack = 0;    // total number of bottles not replenished
                 computeRemain(stock, sodaList, total_lack, total_amount );  // main computation
 
                 if (total_lack > 0) prt.print(Printer::Kind::Truck,'U', i, total_lack); // print iff lack > 0
@@ -58,8 +59,6 @@ void Truck::main() {
                     prt.print(Printer::Kind::Truck,'X');
                     yield(10);
                 }   // if
-
-                if (total_amount == 0) break; // if no stock left, begin another ship
                 times--;
             } // for
         }   catch(BottlingPlant::Shutdown &){break;}    // try

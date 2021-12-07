@@ -70,7 +70,6 @@ void VendingMachine::main(){
             case VendingMachine::Status::free:
                 prt.print(Printer::Kind::Vending, id, 'A');
                 stock[currFlavour]--;
-                prt.print(Printer::Kind::Vending, id, 'B', currFlavour, stock[currFlavour]);
                 break;
             case VendingMachine::Status::funds:
                 break;

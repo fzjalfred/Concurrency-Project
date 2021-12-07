@@ -1,0 +1,322 @@
+======================
+User interface testing
+======================
+
+#### Test invalid command-line arguments (seed = 0) "soda.config 0"  
+----- SHOULD BE A USAGE MESSAGE 
+Usage: ./sodasoda [ config-file | ’d’ [ seed (> 0) | ’d’ [ processors (> 0) | ’d’ ] ] ]
+
+#### Test invalid command-line arguments (seed < 0) "soda.config -3"  
+----- SHOULD BE A USAGE MESSAGE 
+Usage: ./sodasoda [ config-file | ’d’ [ seed (> 0) | ’d’ [ processors (> 0) | ’d’ ] ] ]
+
+#### Test valid command-line arguments "soda.config 12"  
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+#### Test invalid command-line arguments (processors = 0) "soda.config 11 0"  
+----- SHOULD BE A USAGE MESSAGE 
+Usage: ./sodasoda [ config-file | ’d’ [ seed (> 0) | ’d’ [ processors (> 0) | ’d’ ] ] ]
+
+#### Test invalid command-line arguments (processors < 0) "soda.config 11 -4"  
+----- SHOULD BE A USAGE MESSAGE 
+Usage: ./sodasoda [ config-file | ’d’ [ seed (> 0) | ’d’ [ processors (> 0) | ’d’ ] ] ]
+
+#### Test valid command-line arguments "soda.config 11 2"  
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+#### Test invalid command-line arguments (non-existed conf file) "soda.conf"  
+----- SHOULD BE A USAGE MESSAGE 
+Error: could not open input file "soda.conf"
+
+#### Test valid command-line arguments (existed conf file) "soda.config"  
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+#### Test valid command-line arguments (default) ""
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+#### Test valid command-line arguments (default) "d"
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+#### Test valid command-line arguments (default) "d d"
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+#### Test valid command-line arguments (default) "d d d"
+----- SHOULD BE NO USAGE MESSAGE 
+Correct!
+
+
+======================
+Algorithm testing
+======================
+Case 1: ./soda soda.config 210434
+### OUTPUT
+Parent  Gropoff WATOff  Names   Truck   Plant   Stud0   Stud1   Mach0   Mach1   Mach2   Cour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S       S1,5    S0,3    S2      S2      S2      S
+                C0,5    R0
+D0,3            C1,5    R1              G2                                              t0,5
+                W       R2                      V0
+                        N0,0                            V1
+D1,1    D2              N1,1
+D0,3                                                                                    T0,5
+D1,2            W       N0,1    P2              V1                                      t1,5
+                                d0,2
+                                U0,18
+                                D0,0    P                       r
+        D2                                                      R
+D0,3    F               N0,2    P7      G7      V2
+                                d1,7
+                                U1,13
+                                D1,0    P                               r
+D1,3                                    G7                              R               L1
+                                                V0      G0,0            B0,1
+D0,3            C1,5    N0,0                    V1      L                               t1,5
+                W       N0,1    P7
+                                d2,7
+                                U2,13
+D1,1                            D2,0    P                                       r
+D0,3                            P5      G5      G1,0                    B1,1    R
+                                d0,5
+                                U0,13
+D0,1                            D0,0    P                       r       B1,0
+                                P6      G6      B1,3            R
+                                d1,6    P
+                                U1,11
+                                D1,1                                    r
+                                d2,1
+                                U2,12
+D0,1                            D2,0    G6                              R       r
+D1,2                                            B1,1                    B1,1    R
+D1,1                            P6                                                      T1,5
+                                d0,6
+                                U0,7
+                                D0,0    P                       r       A
+D0,1            T0,7                    G3                      R                       t0,7
+D1,1            W               P3              B1,6    A0,5            B1,0            T0,7
+                                d1,3
+                                U1,13
+                                D1,2    P                               r
+                                d2,2
+                                U2,10
+D0,3                    N0,2    D2,0    G5      V2                      R       r
+D0,1                                                                            R
+                                                B1,4                            B1,2
+                                P5              F
+                                d0,5
+                                U0,3
+                                D0,1    P                       r
+                                d1,1
+                                U1,12
+D1,1                            D1,0    G3                      R       r
+                                                                        R
+D1,1                                                    A0,5            A
+D1,3                            F       F               F       F       F
+D1,1                                                                            F
+D1,2
+F               F       F                                                               F
+***********************
+#### OUTPUT Analysis: 
+All the tasks printed S when they started and printed F when they quit
+
+Parent: The Parent task randomly deposit 1-3 money to student 0 or 1's account.
+
+Gropoff: The Groupoff task directly quit (print F) after it deposit the amount of SodaCost(2) to 2 students
+
+Names: The NameServer task begins by register 3 machines; and for each student's call to getMachine (print V), we can always find a corresponding N (sid) (vid) printed in NameServer, meaning that it has received students' call
+
+Truck and Plant: In the beginning, Truck picks up 2 amount of soda after Plant generated 2 soda; then the Truck stocked machine 0, and there are (5*4-2 = 18) unreplenished soda, which is correct, so the Truck
+end this shipment and begins another pickup, and start stock machine 1, while stocking machine 0 and 1, we can find a corresponding r and R printed at the machine side.
+
+Student: stu0 has to buy flavour 1 for 5 times; stu1 has to buy flavour 0 for 3 times. In the beginning, students are acquiring a machine that has stock for their flavour, so V is printed many times.
+We can see for student0, the total number of G and B printed is 5. For student0, the total number of 'B' and 'G' is 5; for student1, the total number of 'G' and 'A' is 3, which is desirable.
+
+Cour: cour starts processing the job (print 't') when C is printed in WATOff (a new job is created), and ended its job by printing 'T'. When it lost Stu1's WatCard, it does not print 'T' and immediately process a new job, which is correct.
+
+
+Case 2: ./soda soda.config 44842 (MaxShippedPerFlavour is changed to 10)
+### This test is used to test the logic of Truck shipment
+Parent  Gropoff WATOff  Names   Truck   Plant   Stud0   Stud1   Mach0   Mach1   Mach2   Cour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S       S0,5    S0,4    S2      S2      S2      S
+                C0,5    R0
+D1,3            C1,5    R1              G13                                             t0,5
+                W       R2                      V0
+                        N0,0                            V1
+D1,2    D2              N1,1    P13
+                                d0,13
+                                U0,10
+D0,1                            D0,3    P                       r
+                                d1,3
+                                U1,17
+                                D1,0    G18                     R       r
+D0,1                                                                    R
+                                P18                     G0,0            B0,0
+                                d2,18
+                                U2,5
+        D2                      D2,3    P                                       r
+        F                       d0,3
+                                U0,9
+D0,1                            D0,2    G28                     r               R
+                                d1,2
+                                U1,16
+                                D1,0                            R       r
+D0,3                                            G0,0            B0,4    R               L0
+                                                                                        t1,5
+                W                                       L                               L1
+                C1,5            P28
+                                d2,28
+                                U2,2
+D0,1            W               D2,25   P                                       r       t1,5
+                                d0,25
+                                U0,5
+                                D0,20   G22                     r               R
+                                d1,20
+                                U1,5
+D1,3            C0,5            D1,9            L               R       r
+D0,1                            P22                                     R
+                                d2,22
+D0,2                            D2,20   P                                       r
+                                d0,20
+                                D0,15   G17                     r               R
+                                d1,15
+                                U1,2
+D0,2                            D1,12                           R       r
+                                P17                                     R
+                                d2,17
+D1,2                            D2,17   P                                       r       T1,5
+                                                                                        t0,5
+                                d0,17                                                   T0,5
+                W               D0,17   G5              B0,3    r       B0,4    R
+D0,2                            d1,17                           R
+                                D1,14                           A       r
+D1,2                                            A0,5                    R
+D0,1                                                    A0,3    B0,3    A
+                                P5              B0,3                    A
+                                d2,5
+                                D2,5                    A0,3
+                                d0,5    P               F                       r
+D0,1                            D0,3    G28                     r               R
+                                d1,3
+                                D1,1                            R       r
+                                P28                             B0,4    R
+                                d2,28
+D0,1                            D2,28   P       B0,1                            r
+                                d0,28
+                                D0,27   G20                     r               R
+                                d1,27
+D0,2            T0,7            D1,27                           R       r
+                                                                        R               t0,7
+                                P20                                                     T0,7
+                                d2,20
+                W               D2,20   P                                       r
+                                d0,20
+D1,2                            D0,20   G13                     r               R
+                                d1,20
+                                D1,20                           R       r
+D1,2                            P13                             A       R
+                                d2,13
+                                D2,13           A0,8
+                                d0,13   P       F                               r
+D1,2                            D0,12   G19                     r               R
+D0,2                            X                               R
+D0,1                            d1,12
+                                D1,12                                   r
+D1,3                            F       F                       F       R
+D1,2                                                                    F       F
+D0,3
+F               F       F                                                               F
+*****************
+#### OUTPUT Analysis: (here we focus on Truck)
+When the Truck first pickup 13 soda from the Plant, it stocks machine 0 and 1, but there is no remaining soda, so it begins another pickup.
+We skip to the third pickup (P 28), we can see that the last machine it fills is machine, so it starts with machine 2 as desired. it stocks machine 2, 0, 1 in order and left 9 soda.
+But it has already finished one cycle (3 machines in total), so it begins another pickup, which is correct, also we notice that there is a 'X' printed, which is a rare feature we want.
+
+
+Case 3: ./soda soda.config 44849 (MaxShippedPerFlavour is changed to 1)
+### This test is used to test how Truck handle the case when Plant produce 0 soda
+
+### OUTPUT (part of the output we want to focus on)
+Parent  Gropoff WATOff  Names   Truck   Plant   Stud0   Stud1   Mach0   Mach1   Mach2   Cour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S       S3,6    S2,2    S2      S2      S2      S
+                C0,5    R0
+D1,2            C1,5    R1              G0                                              t0,5
+                W       R2                      V0
+                        N0,0                            V1
+D0,2    D2              N1,1                    V1
+D1,2                    N0,1                    V2
+D0,1                    N0,2    P0      P
+        D2              N0,0            G2      V0
+D0,1    F                       P2
+                                d0,2
+                                U0,18
+D1,2                            D0,0    P                       r
+D0,2                    N0,1            G2      V1              R                       T0,5
+                                                                                        t1,5
+D0,2            W               P2                                                      T1,5
+
+#### OUTPUT Analysis: (here we focus on Truck)
+We can see Plant first generated 0 soda, so the Truck picks up 0 soda, and found that there is no sufficient soda to fill machine stocks,
+so it begins this generation and begins another pickup.
+
+Case 4: ./soda soda.config 44819 (Stud0 lost his WatCard but use giftcard to buy the only soda he needs; default config)
+###To test how student handle a lost when he can use a giftCard to buy the last soda he wants.
+
+### OUTPUT (part of the output we care)
+Parent  Gropoff WATOff  Names   Truck   Plant   Stud0   Stud1   Mach0   Mach1   Mach2   Cour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S       S0,1    S2,4    S2      S2      S2      S
+                C0,5    R0
+D1,1            C1,5    R1              G3                                              t0,5
+                W       R2                      V0
+                        N0,0                            V1
+D1,2    D2              N1,1                    V1
+D1,3                    N0,1    P3
+                                d0,3
+                                U0,17
+D0,3                    N0,2    D0,0    P       V2              r
+        D2              N0,0            G1      V0              R
+D0,2    F                                                       B0,0                    L0
+                                                                                        t1,5
+                                                G0,0                                    T1,5
+                W               P1              F
+
+
+###OUTPUT Analysis: (here we focus on student0)
+Here, stu0's WatCard is not available, and the giftCard is available, so although the student lost his watCard, 
+he did not access it, which means he did not need to create a new one, which is desirable. 
+
+Case 5: ./soda soda.config 667 3 (NumCouriers is changed to 3; NumStudents is changed to 3)
+###To test how multiple couriers with multiple processors work
+
+###OUTPUT
+Parent  Gropoff WATOff  Names   Truck   Plant   Stud0   Stud1   Stud2   Mach0   Mach1   Mach2   Cour0   Cour1   Cour2
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S                                                                       S       S       S
+D1,1                    R0                                              S2
+D1,3                    R1                                                      S2      S2
+D2,2                    R2      S       S       S0,2
+D0,3            C0,5    N0,0            G7      V0      S3,3                                    t0,5
+D2,1            W               P7      P               V1      S0,8
+D2,2            C1,5    N1,1    d0,7    G3                              r
+                C2,5    N2,2    U0,13                           V2
+D2,2    D2      W               D0,0                                    R                               t1,5    t2,5
+D0,2            W               P3              G0,0                    B0,0                    T0,5
+                                d1,3    P                                       r
+D0,2    D2                      U1,17   G5
+D2,3    D2              N0,1    D1,0            V1                              R
+D2,2    F               N2,0    P5      P               a3,2    V0              A
+                                d2,5    G4                                      B0,0    r
+D1,2                    N1,2    U2,15           B0,3    V2
+D1,1                            D2,0            F                                       R               T1,5    T2,5
+                                P4      P               V0
+
+#### OUTPUT Analysis: (here we focus on Courier):
+We can see that when Cour0 is processing the job C0,5 (between t and T), Cour1 and Cour2 also begins processing the other two jobs, it's desirable since
+our program should be more parallel because of 3 processors and our 3 couriers should work parallel. 

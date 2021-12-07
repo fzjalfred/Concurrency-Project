@@ -39,7 +39,7 @@ Printer::Printer( unsigned int numStudents, unsigned int numVendingMachines, uns
 
 Printer::~Printer(){
     printBuffer();
-    cout << "*****************" << endl;
+    cout << "***********************" << endl;
 
     delete[] buffer;
 }   // ~Printer

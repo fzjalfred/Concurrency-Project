@@ -32,8 +32,11 @@ void Student::main(){
         for(;;){    // handle lost case
             try{
                 _Select(watCard || giftCard);
-                if (watCard.available()) watCard();
-                break;
+                if (giftCard.available()) break;
+                else {
+                    watCard();
+                    break;
+                }
             }   catch(WATCardOffice::Lost &){
                 watCard.reset();
                 prt.print(Printer::Kind::Student,id,'L');

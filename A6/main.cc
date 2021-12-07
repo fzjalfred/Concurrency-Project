@@ -43,14 +43,13 @@ int main(int argc, char const *argv[])
                     throw 1;
             }   // switch
     }   catch(...){
-        cerr << "Usage: " << argv[0] << "soda [ config-file | ’d’ [ seed (> 0) | ’d’ [ processors (> 0) | ’d’ ] ] ]" << endl;
+        cerr << "Usage: " << argv[0] << " [ config-file | ’d’ [ seed (> 0) | ’d’ [ processors (> 0) | ’d’ ] ] ]" << endl;
         exit(EXIT_FAILURE);
     }   // try catch
 
     uProcessor p[processors - 1]; // number of kernel threads
     rng.set_seed(seed); // set rng's seed
     if ( processors == 1 ) uThisProcessor().setPreemption( 0 ); // turn off time-slicing for reproducibility
-    cerr << seed << endl;
     /* initialize all tasks */
     {
         Printer prt(cparms.numStudents, cparms.numVendingMachines, cparms.numCouriers);
@@ -69,7 +68,7 @@ int main(int argc, char const *argv[])
             machines[i] = new VendingMachine(prt, nameServer, i, cparms.sodaCost);
         }
 
-        {
+        {   // students, plant, truck live scope
             BottlingPlant plant(prt, nameServer, 
             cparms.numVendingMachines, cparms.maxShippedPerFlavour, 
             cparms.maxStockPerFlavour, cparms.timeBetweenShipments);
@@ -82,7 +81,7 @@ int main(int argc, char const *argv[])
             for (unsigned int i = 0; i < cparms.numStudents; ++i){
                 delete students[i];
             }
-        }   // students, plant, truck exit
+        }   
 
         /* wait all tasks to finish */
         for (unsigned int i = 0; i < cparms.numVendingMachines; ++i){
