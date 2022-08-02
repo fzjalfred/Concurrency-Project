@@ -1,0 +1,474 @@
+CS 343 Assignment 6 Testing documentation 
+
+Conclusion: 
+    -   Tested if correct command-line arguments are provided 
+    -   Tested if correct configuration parameters are provided 
+    -   Tested with default configuration values 
+    -   Tested with different configuration values to ensure all cases are covered 
+------------------------------------------------------------------------------------------------------------------
+Case 0: Invalid command-line arguments 
+#### Test invalid command-line arguments "lrt.config 66 3"  
+----- SHOULD BE A USAGE MESSAGE 
+Usage: ./lrt [ config-file [ seed (> 0) ] ]
+
+#### Test invalid command-line arguments "ok.config 66"  
+----- Assume ok.config cannot be opened 
+----- SHOULD BE AN ERROR MESSAGE 
+Error: could not open input file "ok.config"
+------------------------------------------------------------------------------------------------------------------
+Case 1: Invalid configuration parameters "test.config"
+#### Test invalid configuration parameters "stopCost = 0"   
+----- SHOULD BE AN ERROR MESSAGE 
+ERROR: stop cost must be > 0
+
+#### Test invalid configuration parameters "numStudents = 0"   
+----- SHOULD BE AN ERROR MESSAGE 
+ERROR: number of students must be > 0
+
+#### Test invalid configuration parameters "numStops = 0"   
+----- SHOULD BE AN ERROR MESSAGE 
+ERROR: number of stops must be > 1
+
+#### Test invalid configuration parameters "maxNumStudents = 0"   
+----- SHOULD BE AN ERROR MESSAGE 
+ERROR: train capacity must be > 0
+
+#### Test invalid configuration parameters "maxStudentTrips = 0"   
+----- SHOULD BE AN ERROR MESSAGE 
+ERROR: maximum number of student trips must be > 0
+
+#### Test invalid configuration parameters "numCouriers = 0"   
+----- SHOULD BE AN ERROR MESSAGE 
+ERROR:  number of couriers must be > 0
+
+#### Test invalid configuration parameters "negative number"   
+----- SHOULD BE AN ERROR MESSAGE 
+Error: file "test.config" parameter MaxStudentDelay value -5 must be non-negative.
+
+#### Test invalid configuration parameters "negative number"   
+----- SHOULD BE AN ERROR MESSAGE 
+Error: file "test.config" parameter TimerDelay value -2 must be non-negative.
+
+#### Test invalid configuration parameters "negative number"   
+----- SHOULD BE AN ERROR MESSAGE 
+Error: file "test.config" parameter GroupoffDelay value -10 must be non-negative.
+
+#### Test invalid configuration parameters "negative number"   
+----- SHOULD BE AN ERROR MESSAGE 
+Error: file "test.config" parameter ConductorDelay value -5 must be non-negative.
+
+#### Test invalid configuration parameters "negative number"   
+----- SHOULD BE AN ERROR MESSAGE 
+Error: file "test.config" parameter ParentalDelay value -5 must be non-negative.
+------------------------------------------------------------------------------------------------------------------
+Case 2: ./lrt test.config 6666 ( default configuration values )
+#### OUTPUT 
+Parent  Gropoff WATOff  Names   Timer   Train0  Train1  Cond0   Cond1   Stop0   Stop1   Stud0   Stud1   WCour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S0,<    S1,>    S       S       S       S       S3              S
+                C0,1    R0                                                                      S2
+D1,1            W       R1                                                                              t0,1
+                C1,1    L               A0,5,0          c       c
+                        L                       A1,5,0                  A0,5,0
+D0,1            W       L                                                       A1,5,0                  L0
+                                                                                                        t1,1
+                                                                                        T0,1,<          T1,1
+                                                                                        f
+        D1      C0,1    T0,0    t0                                      t       t       L
+D1,1            W       T1,1    t1      A1,5,0  A0,5,0                  t       B1              T1,0,<  t0,1
+                                                                                                B1,0
+D0,1                                                    c       c       A1,5,0  W1,<    T0,1,<  W1      T0,1
+                                                                                        f
+        D1              T0,0                                            W0,<    A0,5,1  W0
+D0,1    F                       t2      E1,0                            t       t               E0
+D0,1                            t3      A0,5,1  A1,5,0                          t
+D0,1                                                            c       t       A1,5,0
+                                t4                      c               A0,5,1  t
+D1,1                            t5      E0,1    A0,5,0          c       t       t       E0
+D0,1                                                                    A1,5,0                  D0
+                                t6      A1,5,1          e0              t       t
+                                                A1,5,0                  D1      A0,5,0
+D0,1                                                    c               t       A1,5,0
+                                t7                              c               t       e
+D1,1                                    A0,5,0  A0,5,0                  t       t       F
+                                t8                                      A1,5,0                  T0,1,<
+                                                                                                f
+D1,1                    T1,0                            c       c       A0,5,0                  W0
+                                                                        W1,<
+D1,1                            t9      E1,1    A1,5,0                  t       t               E0
+D1,1                                                                    t       A1,5,0
+D0,1                            t10     A1,5,1  A0,5,0  e1      c       A1,5,0  t
+                                                        c               t       A0,5,0
+                                t11             A1,5,0                          t               e
+D1,1                                    A0,5,0                  c       t       A1,5,0          F
+D1,1                            t12                     F               A0,5,0  t
+                                t13     F       A0,5,0                  t       t
+D0,1                                                            c       A1,5,0
+D1,1                            t14             A1,5,0                  t       t
+                                t15                             F       t       t
+                                                                        t       A1,5,0
+D0,1                            t16             F                       t       t
+D1,1                            t17                                     t       t
+D0,1                            F                                       F       t
+D1,1            F       F                                                       F                       F
+F
+***********************
+#### OUTPUT Analysis: 
+All tasks have successfully printed start and finish 
+Parent:     has been giving money to random student ( amount of money will be tested in later cases ).
+Groupoff:   has given every student a gift ( number of D equals to the number of students ).
+Office:     has created a watcard for every student, and also has created a new watcard when Exception lost
+            is raised. In addition, the number of W matches the number of requests ( 3 W and 3 C ).
+            Transfer will be tested in later cases. 
+NameServer: each train stop has successfully registered.
+            3 L has been displayed since this case contains one timer and two trains.
+            for identity of train stop, it matches the student ID and the trainstop ID the student waits at 
+Timer:      periodically ticks, so perform correctly 
+Train:      clockwise and counter clockwise routine will be explicitly shown in later cases ( more train stops )
+            train's embark matches student's embark info 
+Conductor:  periodically checks for POP 
+            caught unlucky student cheating successfully ( student 0 cheated at first trip 
+                                                           student 1 cheated at second trip ) 
+TrainStop:  buying information matches student's buying ticket 
+            arriving information matches for each train ( include number of students waiting ) 
+            waiting information matches student's waiting status
+            disembark information matches student's disembark status 
+            for each train stop, number of ticks matches the number of t occurred in timer 
+Student:    f is printed when student is not paying for the trip 
+            e is printed when student is ejected if caught by conductor 
+            waiting information is printed when train is not at the train stop that student gets on 
+            embark information is printed when train arrives 
+            disembark information is printed when student needs to get off 
+            L is printed when watcard is lost 
+            Buying with watcard is printed when student decides to use watcard to pay for the trip 
+Courier:    start funds transfer matches complete funds transfer 
+            L is printed when card is lost during requesting transfer 
+            one 't' corrsponds to a pair of 'C and W' in watcard office 
+------------------------------------------------------------------------------------------------------------------
+Case 3: ./lrt test.config 6666 
+        ( stopCost = 3, numStudents = 1, numStops = 4, , groupOffDelay = 2, conductorDelay = 15 )
+#### OUTPUT 
+Parent  Gropoff WATOff  Names   Timer   Train0  Train1  Cond0   Cond1   Stop0   Stop1   Stop2   Stop3   Stud0   WCour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S0,<    S2,>    S       S       S       S       S       S       S5      S
+                C0,6    R0
+        D6      W       R1                                                                                      t0,6
+D0,6    F               R2                                                                                      T0,6
+                        R3
+D0,4                    L               A0,5,0
+                        L                       A2,5,0                  A0,5,0                          T2,1,>
+                        L                                                               A1,5,0          f
+D0,2                    T0,2    t0                      c       c       t       t       W0,>            W2
+D0,4                            t1      A1,5,0  E0,1                    t       t       t       t       E1
+D0,2                            t2              A1,5,1          e0      t       A0,5,0  t       t
+                                t3      A2,5,0                                  t       t       t
+D0,4                                                                    t       A1,5,0  A0,5,0
+D0,6                            t4      A3,5,0                                  t       t       t       e
+                                                A0,5,0  c               t       t       t       A0,5,0  F
+                                t5                                      A1,5,0                  t
+D0,4                            t6      A0,5,0  A3,5,0  F       c       t       t       t       t
+D0,4                                                                    A0,5,0                  A1,5,0
+                                t7      F       A2,5,0                  t       t       t       t
+D0,2                            t8                                      t       t       t       t
+                                                                        t       t       A1,5,0
+D0,2                            t9              A1,5,0                  t       A1,5,0  t       t
+D0,2                            t10             A0,5,0                  A1,5,0  t       t       t
+                                t11             A3,5,0          c       t       t       t       t
+D0,4                                                                    t       t       t       A1,5,0
+                                t12             A2,5,0                  t       t       t       t
+D0,4                            t13                             F       t       t       A1,5,0  t
+D0,6                            t14             F                       t       t       t       t
+                                t15                                     t       t       t       t
+D0,2                            F                                       F       F       t       t
+D0,6                    F                                                               F       F
+D0,2            F                                                                                               F
+F
+***********************
+#### OUTPUT Analysis:
+Parent:     random amount of money is given to the student 
+Train:      train 0 is travelling in clockwise direction with starting at 0 
+            train 1 is travelling in counterclockwise direction with starting at 2 
+Student:    student picks the correct direction in order to take the correct train 
+------------------------------------------------------------------------------------------------------------------
+Case 4: ./lrt test.config 6666 
+        ( stopCost = 3, numStudents = 3, numStops = 2, groupOffDelay = 1, 
+          conductorDelay = 15, maxStudentTrips = 2 ) 
+        with groupOffDelay is 1, expected student to use giftcard to buy ticket 
+#### OUTPUT   
+Parent  Gropoff WATOff  Names   Timer   Train0  Train1  Cond0   Cond1   Stop0   Stop1   Stud0   Stud1   Stud2   WCour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S0,<    S1,>    S       S       S       S       S1                      S
+                C0,3    R0                                                                      S2
+D2,3            W       R1                                                                                      t0,3
+                C1,3    L               A0,5,0                                                          S2
+                C2,3    L                       A1,5,0                  A0,5,0
+D0,2                    L       t0                                              A1,5,0  T0,1,<
+D1,3                    T0,0    t1      A1,5,0  A0,5,0  c       c       t       t               T1,0,<
+        D3              T1,1                                            A1,5,0  A0,5,0                  T0,1,<
+D1,2                    T2,0    t2      A0,5,0  A1,5,0                  t       t
+                                                                        t       B3              G3,0
+D1,2                                                                    A0,5,0  W1,<            W1
+D0,1    D3      W                                                               A1,5,0                          L0
+                                                                                                                t1,3
+                                                                                                        f       L1
+                                                                                t       f               W0
+                W               t3              A0,5,0                  W2,<            L                       t2,3
+D0,2            C0,3                                                    A1,5,0          F                       T2,3
+D0,2            W               t4      E2,1            c       c       t       t                       E0      t0,3
+        D3                                                                                                      T0,3
+D1,1    F                       t5      A1,5,1  A1,5,0  e2              t       t
+                                                                        t       A1,5,0
+                                                                                A0,5,1
+D2,3                            t6              A0,5,0                  t       t               E0
+D2,1                                    E1,0            c       c       A1,5,0  t                       e
+D1,1                            t7                                      t       t                       F
+D1,1                            t8      A0,5,1  A1,5,0                  A0,5,0  A1,5,0
+                                t9      A1,5,0  A0,5,0                  t       t               D0
+D2,2                                                                    A1,5,0  A0,5,0
+                                                                        D1
+D0,2                            t10     A0,5,0  A1,5,0  c       c       t       t
+                                                                        A0,5,0  A1,5,0
+D0,1                            t11                                     t       t               T0,1,<
+                                                                                                f
+                C1,3                                                                            L
+                W       T1,0            A1,5,0  A0,5,0                                          F               t1,3
+D2,1                            t12                                     t       t                               T1,3
+                                                                        A1,5,0  A0,5,0
+D1,3                            t13     A0,5,0  A1,5,0                  t       t
+                                                                        A0,5,0  A1,5,0
+D0,2                            t14     A1,5,0  A0,5,0  c       c       t       t
+                                                                        A1,5,0  A0,5,0
+D1,1                            t15     A0,5,0  A1,5,0                  t       t
+D2,3                            t16                     F               t       t
+                                                                        A0,5,0  A1,5,0
+D0,3                            t17     F       A0,5,0                  t       t
+                                                                        A1,5,0
+D1,3                            t18             A1,5,0                  t       t
+                                                                c       t       A1,5,0
+D2,1                            t19             A0,5,0                  t       t
+                                t20                             F       A1,5,0  t
+D2,2                            t21             F                       t       t
+                                t22                                     t       t
+D0,1                            F                                       t       t
+D2,1                    F                                               F       F                               F
+D0,2            F
+F
+***********************
+#### OUTPUT Analysis:
+Student:    student uses giftcard to buy ticket  
+------------------------------------------------------------------------------------------------------------------
+Case 5: ./lrt test.config 65
+        ( stopCost = 3, numStudents = 3, numStops = 2, groupOffDelay = 1, 
+          conductorDelay = 15, maxStudentTrips = 2 ) 
+#### OUTPUT
+Parent  Gropoff WATOff  Names   Timer   Train0  Train1  Cond0   Cond1   Stop0   Stop1   Stud0   Stud1   WCour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S0,<    S1,>    S       S       S       S       S3              S
+                C0,1    R0                                                                      S3
+D1,1            W       R1                                                                              t0,1
+                C1,1    L               A0,5,0          c       c
+                        L                       A1,5,0                  A0,5,0
+D0,1            W       L                                                       A1,5,0                  T0,1
+                                                                                                        t1,1
+        D1              T0,1    t0                                      t       B1      T1,0,<          T1,1
+                                                                                        B1,0
+D1,1                                                                                    W1      T1,0,<
+                                                                                                f
+                        T1,1            A1,5,0                                  W0,<            W1
+D0,1                                                    c                       W1,<
+                                                                                A0,5,2
+        D1                                                                      t
+D1,1    F                       t1                                      t               E0      E0
+D0,1                                    E0,0    A0,5,0                  A1,5,0  t
+D1,1                            t2      E1,0                    c       t       t
+D0,1                            t3      A0,5,2  A1,5,0  e1              A0,5,0  A1,5,0
+D0,1                            t4              A0,5,0  c       c       t       t       D0
+                                                                        A1,5,0                  e
+                                        A1,5,0                          D0                      F
+D1,1                            t5                                      t       t
+                                                A1,5,0  c               t       A0,5,0
+D0,1                            t6      A0,5,0                  c       t       t       T0,1,<
+                        T0,0                                            A0,5,0  A1,5,0
+D0,1                            t7                                      B1      t       G1,0
+D1,1                                            A0,5,0  c               W0,<            W0
+                                                                c       A1,5,0
+D1,1                            t8      E0,1    A1,5,0                  t       t       E0
+D0,1                            t9      A1,5,1                          t       t
+                                                        c       c       t       A1,5,0
+D1,1                                                                            A0,5,0
+D1,1                            t10             A0,5,0                  t       t       D1
+                                t11     A0,5,0                  c       A1,5,0  t
+D1,1                                                                    t       D0
+                                t12             A1,5,0  c               A0,5,0  t
+D0,1                                                                    t       A1,5,0
+trainstop: insufficient funds 0
+D0,1            T0,2    T0,1    t13     A1,5,0  A0,5,0          c       A1,5,0  t       T1,0,<
+                W                                                       t                               t0,2
+D1,1            C0,1                            A1,5,0  c                       A0,5,0  L               L0
+                W                                                               t                       t0,1
+                                t14     A0,5,0                  c       t       B1                      T0,1
+D0,1                                                                    A0,5,0          B1,0
+D1,1                                                    c                       W0,<    W1
+                                                                                A1,5,0
+D0,1                            t15             A0,5,0                  t       t
+                                t16     A1,5,0                          A1,5,0  t
+D0,1                                                            c       t       A0,5,1
+D1,1                            t17     E0,0    A1,5,0  c               t       t       E0
+                                        A0,5,1                  c               A1,5,0
+D0,1                            t18                                     A0,5,0  t
+                                t19             A0,5,0  c               t       t       D0
+D1,1                                    A1,5,0                  c       A1,5,0          F
+                                                                        D0      A0,5,0
+D0,1                            t20     A0,5,0  A1,5,0  c               t       t
+                                                                        A0,5,0  A1,5,0
+D0,1                            t21     A1,5,0  A0,5,0          c       t       t
+D1,1                                                    F               A1,5,0  A0,5,0
+                                t22     F       A1,5,0                  t       t
+D0,1                            t23                                     t       t
+                                                                c       t       A1,5,0
+D0,1                            t24             A0,5,0                  t       t
+                                t25                             F       A1,5,0  t
+D1,1                            t26             F                       t       t
+D1,1                            t27                                     t       t
+                                F                                       t       t
+D0,1                    F                                               F       F
+D0,1            F                                                                                       F
+F
+***********************
+#### OUTPUT Analysis
+TrainStop:  error message is printed when student has insufficient funds 
+------------------------------------------------------------------------------------------------------------------
+Case 6: ./lrt test.config 65
+        ( stopCost = 3, numStudents = 3, numStops = 2, maxNumStudents = 1, groupOffDelay = 2,
+          maxStudentTrips = 2 ) 
+        since each train can take at most 1 student, so expected to see more waiting for students 
+#### OUTPUT
+Parent  Gropoff WATOff  Names   Timer   Train0  Train1  Cond0   Cond1   Stop0   Stop1   Stud0   Stud1   Stud2   WCour0
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S0,<    S1,>    S       S       S       S       S2                      S
+                C0,3    R0                                                                      S1
+D0,1            W       R1                                                                                      t0,3
+                C1,3    L               A0,1,0          c       c                                       S1
+        D3      C2,3    L                       A1,1,0                  A0,1,0
+D2,3    D3              L                                                       A1,1,0
+        D3
+        F               T0,1    t0                                      t       B3      T1,0,<
+                                                                                        G3,0
+D0,1                                                                                    W1      T0,1,<
+                                                                                                f
+                        T1,0            A1,1,0                          W1,<    W0,<            W0      T1,0,<
+                                                                                                        f
+D2,2                    T2,1                            c                       A0,1,1                  W1
+                                                                                W2,<
+D2,1                            t1      E0,0    A0,1,0                  t       t       E0
+D0,1            W                                                       A1,1,0                                  T0,3
+                                t2      A0,1,1                  c       t       t                               t1,3
+D1,1                            t3              A1,1,0  c               A0,1,1  t
+                                                                        t       A1,1,0
+D2,2                            t4      E1,1    A0,1,0          c               t               E0
+D2,3                                                                    A1,1,0          D0
+                                t5      A1,1,1          e1              t       t
+D0,3                                            A1,1,0                  D0      A0,1,1
+                                                        c               t       A1,1,0
+D1,2            W               t6                              c       t       t                       E0      T1,3
+                                                                                                                t2,3
+                                        E2,0                                                    e               T2,3
+D1,2                    T0,0    t7      A0,1,1  A0,1,0  e2              A1,1,0  t       T0,1,<  F
+                                                                        B3              B3,0
+D1,3                                                    c       c       W0,<            W0
+D2,3                                                                    A0,1,1
+D2,3                            t8      E0,1    A1,1,0                  t       t       E0
+                                                                        t       A1,1,0
+                                                                                t                       e
+D1,3                            t9      A1,1,1  A0,1,0          c       A1,1,0                          F
+D2,3                            t10                                     t       t
+                                                A1,1,0  c               t       A0,1,0
+D2,2                            t11                             c       t       t       D1
+                                        A0,1,0                                  A1,1,0  F
+D0,1                                                                    A0,1,0  D0
+                                t12             A0,1,0  c               t       t
+D2,1                            t13     A1,1,0                          A1,1,0  t
+                                                        F       c       t       A0,1,0
+D0,1                            t14     F       A1,1,0                  t       t
+                                t15                                             t
+D0,3                                                            c       t       A1,1,0
+D1,1                            t16             A0,1,0                  t       t
+                                t17                             F       A1,1,0  t
+D2,1                            t18             F                       t       t
+                                t19                                     t       t
+D0,1                            F                                       t       t
+D2,2            F       F                                               F       F                               F
+D0,1
+F
+***********************
+#### OUTPUT Analysis
+Student:    more waiting status is printed as expected 
+------------------------------------------------------------------------------------------------------------------
+Case 7: ./lrt test.config 65
+        ( stopCost = 3, numStudents = 3, numStops = 2, maxNumStudents = 1, groupOffDelay = 2, 
+          numCouriers = 2 )
+        with mutiple couriers, requests can be seperated processing 
+#### OUTPUT 
+Parent  Gropoff WATOff  Names   Timer   Train0  Train1  Cond0   Cond1   Stop0   Stop1   Stud0   Stud1   WCour0  WCour1
+******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* ******* *******
+S       S       S       S       S       S0,<    S1,>    S       S       S       S       S3              S       S
+                C0,3    R0                                                                      S2
+D1,1            W       R1                                                                              t0,3
+        D3      C1,3    L               A0,1,0          c       c
+        D3      W       L                                               A0,1,0                                  t1,3
+D0,3    F               L       t0              A1,1,0                          A1,1,0  T1,0,<          T0,3
+                        T0,1                                            t       B3      G3,0
+D0,1                    T1,0            A1,1,0                          B3      W0,<    W1      T0,1,<
+                                                                                                G3,0
+D1,1                                                    c               W1,<    A0,1,1          W0
+D0,1                            t1      E0,0    A0,1,0                  t       t       E0
+D0,2                            t2      A0,1,1                  c       A1,1,0  t
+D0,1                            t3              A1,1,0  c               t       t
+                                                                        A0,1,1  A1,1,0
+D1,1                            t4      E1,1    A0,1,0          c       t       t               E0              T1,3
+D0,1                                                                    A1,1,0          D0
+                                t5      A1,1,1                          t       t
+                                                A1,1,0                  D0      A0,1,0
+D0,3                                                    c               t       A1,1,0
+D1,3                            t6      A0,1,0  A0,1,0          c       t       t               D1
+                                                                        A1,1,0  D1      T0,1,<
+D1,2                    T0,0    t7                      c       c       A0,1,0  t
+                                                                        B3              B3,0
+D1,3                    T1,1                                            W0,<    B3      W0      T1,0,<
+                                                                        t                       B3,0
+D1,2                                            A1,1,0                          W1,<    E0      W1
+D1,3                            t8      E0,1                                    t
+                                        A1,1,1                  c       t       A1,1,0
+D0,3                            t9              A0,1,0  c               t       t
+                                                                        A1,1,0  A0,1,1
+D0,3                            t10     E1,0    A1,1,0          c       t       t               E0
+D1,3                            t11                                             t       D1
+                                        A0,1,1                  c       t       A1,1,0
+D1,3                                                                    A0,1,0  D0
+                                t12             A0,1,0  c               t       t
+D1,3                            t13                             c       A1,1,0  t               D0
+                                        A1,1,0                                          T1,0,<  F
+                                                                                        f
+D0,1                    T0,1                                            D1      A0,1,0  W1
+                                                        c               t       W0,<
+D1,1                            t14     E0,0    A1,1,0          c       t       t       E0
+D0,3                                    A0,1,1          e0                      A1,1,0
+                                t15                                     A0,1,0  t
+                                                A0,1,0  c               t       t       e
+D1,1                            t16     A1,1,0                  c       A1,1,0          F
+D0,1                            t17                     F               t       t
+                                                A1,1,0                  t       A0,1,0
+D1,1                            t18     F                       c       t       t
+                                                                                A1,1,0
+D0,2                            t19             A0,1,0                  t       t
+                                t20                             F       A1,1,0  t
+D1,1                            t21             F                       t       t
+D1,2                            t22                                     t       t
+                                F                                       t       t
+D0,3                    F                                               F       F
+D0,1            F                                                                                       F       F
+F
+***********************
+#### OUTPUT Analysis:
+Courier:    with two couriers, each courier completes one request as expected 
+------------------------------------------------------------------------------------------------------------------
